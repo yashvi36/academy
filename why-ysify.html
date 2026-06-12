@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Choose YSIFY — Skills & Innovation Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ─── TOKENS ─────────────────────────────────────────────────── */
+:root {
+  --ink:     #0B0F1A;
+  --ink-2:   #1C2235;
+  --slate:   #4A5568;
+  --muted:   #8492A6;
+  --border:  #E4E9F0;
+  --surface: #F7F9FC;
+  --white:   #FFFFFF;
+
+  --teal:        #00C9A7;
+  --teal-d:      #00A98A;
+  --teal-glow:   rgba(0,201,167,0.18);
+  --violet:      #5B4FE9;
+  --violet-d:    #4338CA;
+  --violet-glow: rgba(91,79,233,0.18);
+  --amber:       #F59E0B;
+  --amber-glow:  rgba(245,158,11,0.15);
+  --coral:       #FF6B4A;
+
+  --grad-primary: linear-gradient(135deg, var(--teal), var(--violet));
+  --grad-hero:    linear-gradient(135deg, #05f0c0 0%, #5B4FE9 100%);
+
+  --shadow-xs: 0 1px 4px rgba(11,15,26,0.06);
+  --shadow-sm: 0 2px 12px rgba(11,15,26,0.08);
+  --shadow-md: 0 8px 32px rgba(11,15,26,0.10);
+  --shadow-lg: 0 20px 60px rgba(11,15,26,0.13);
+  --shadow-teal:   0 8px 32px rgba(0,201,167,0.28);
+  --shadow-violet: 0 8px 32px rgba(91,79,233,0.28);
+
+  --r:    14px;
+  --r-lg: 22px;
+  --r-xl: 32px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+img { max-width: 100%; }
+
+/* ─── SCROLL REVEAL ──────────────────────────────────────────── */
+.sr { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.sr.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── NAVBAR ─────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  height: 70px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%;
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: var(--shadow-md); }
+
+.nav-brand {
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-logo-mark {
+  width: 40px; height: 40px; border-radius: 11px;
+  background: var(--grad-primary);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900; font-size: 15px; letter-spacing: -0.5px;
+  box-shadow: var(--shadow-teal);
+  position: relative; overflow: hidden;
+}
+.nav-logo-mark::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%);
+}
+.nav-wordmark {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800; font-size: 18px; color: var(--ink);
+  letter-spacing: -0.4px;
+}
+.nav-wordmark span { background: var(--grad-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 4px; list-style: none;
+}
+.nav-links a {
+  text-decoration: none; color: var(--slate);
+  font-size: 14px; font-weight: 500;
+  padding: 7px 13px; border-radius: 8px;
+  transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--teal); background: var(--teal-glow); }
+.nav-links a.active { color: var(--teal); font-weight: 600; }
+
+.btn-nav-enroll {
+  background: var(--grad-primary);
+  color: white; font-size: 14px; font-weight: 700;
+  padding: 9px 20px; border-radius: 9px;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+  box-shadow: var(--shadow-teal); transition: all 0.25s;
+  white-space: nowrap;
+}
+.btn-nav-enroll:hover { transform: translateY(-1px); box-shadow: 0 12px 36px rgba(0,201,167,0.35); }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 6px; border: none; background: none;
+}
+.hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; display: block; transition: all 0.3s; }
+
+.mobile-menu {
+  display: none; position: fixed; top: 70px; left: 0; right: 0;
+  background: white; border-bottom: 1px solid var(--border);
+  padding: 16px 5%; z-index: 999; flex-direction: column; gap: 4px;
+  box-shadow: var(--shadow-lg);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  text-decoration: none; color: var(--slate);
+  font-size: 15px; font-weight: 500;
+  padding: 12px 16px; border-radius: 10px; transition: all 0.2s;
+}
+.mobile-menu a:hover { background: var(--surface); color: var(--teal); }
+.mobile-menu .m-enroll {
+  background: var(--grad-primary); color: white !important;
+  text-align: center; font-weight: 700; margin-top: 8px;
+  border-radius: 10px;
+}
+
+/* ─── SECTION UTILS ──────────────────────────────────────────── */
+section { padding: 90px 5%; }
+.s-inner { max-width: 1280px; margin: 0 auto; }
+.s-header { margin-bottom: 60px; }
+.s-header.center { text-align: center; }
+.s-header.center .s-sub { margin: 0 auto; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12px; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 14px;
+}
+.eyebrow-dot { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; }
+
+.s-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(28px, 3.8vw, 46px); font-weight: 900;
+  line-height: 1.1; letter-spacing: -1.2px; color: var(--ink);
+  margin-bottom: 16px;
+}
+.s-title .g { background: var(--grad-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.s-title .v { color: var(--violet); }
+.s-title .t { color: var(--teal); }
+
+.s-sub {
+  font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 560px;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 11px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  text-decoration: none; border: none; font-family: 'Inter', sans-serif;
+  transition: all 0.25s; white-space: nowrap;
+}
+.btn-primary {
+  background: var(--grad-primary); color: white;
+  box-shadow: var(--shadow-teal);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(0,201,167,0.38); }
+.btn-secondary {
+  background: white; color: var(--violet);
+  border: 2px solid rgba(91,79,233,0.2);
+  box-shadow: var(--shadow-xs);
+}
+.btn-secondary:hover { border-color: var(--violet); background: rgba(91,79,233,0.04); transform: translateY(-2px); }
+
+/* ─── PAGE HERO ──────────────────────────────────────────────── */
+#page-hero {
+  min-height: 54vh; padding-top: 70px;
+  display: flex; align-items: center;
+  background: linear-gradient(140deg, #f0fdfb 0%, #f5f3ff 50%, #fff8f0 100%);
+  position: relative; overflow: hidden;
+}
+#page-hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1.2' fill='%2300c9a7' fill-opacity='0.07'/%3E%3C/svg%3E");
+}
+.orb {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  filter: blur(80px); opacity: 0.55;
+}
+.orb-1 { width: 520px; height: 520px; background: radial-gradient(circle, rgba(0,201,167,0.22), transparent 70%); top: -160px; right: -100px; }
+.orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(91,79,233,0.16), transparent 70%); bottom: -80px; left: -100px; }
+.orb-3 { width: 280px; height: 280px; background: radial-gradient(circle, rgba(245,158,11,0.14), transparent 70%); top: 30%; left: 35%; }
+
+.hero-inner {
+  max-width: 1280px; margin: 0 auto; width: 100%;
+  position: relative; z-index: 1;
+  padding: 80px 0 80px;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: white; border: 1.5px solid var(--border);
+  border-radius: 100px; padding: 7px 16px 7px 10px;
+  font-size: 13px; color: var(--slate); font-weight: 600;
+  margin-bottom: 28px; box-shadow: var(--shadow-sm);
+}
+.badge-pulse {
+  width: 10px; height: 10px; background: var(--teal); border-radius: 50%;
+  animation: heroPulse 2s infinite;
+  box-shadow: 0 0 0 0 rgba(0,201,167,0.5);
+}
+@keyframes heroPulse {
+  0%  { box-shadow: 0 0 0 0 rgba(0,201,167,0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(0,201,167,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(0,201,167,0); }
+}
+.hero-h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(36px, 5.5vw, 66px);
+  font-weight: 900; line-height: 1.06; letter-spacing: -2.5px;
+  color: var(--ink); margin-bottom: 22px;
+}
+.hero-h1 .line-grad {
+  background: var(--grad-hero);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-p {
+  font-size: 18px; color: var(--slate); line-height: 1.75;
+  margin: 0 auto 40px; max-width: 600px; font-weight: 400;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+/* ─── WHY REASONS GRID ───────────────────────────────────────── */
+#reasons { background: var(--surface); }
+
+.reasons-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  max-width: 1280px; margin: 0 auto;
+}
+.reason-card {
+  background: white; border-radius: var(--r-lg); padding: 32px;
+  border: 1px solid var(--border); transition: all 0.3s;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; gap: 0;
+}
+.reason-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--grad-primary); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s;
+}
+.reason-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+.reason-card:hover::before { transform: scaleX(1); }
+
+.reason-icon {
+  width: 56px; height: 56px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 20px; flex-shrink: 0;
+}
+.ri-teal   { background: rgba(0,201,167,0.1); }
+.ri-violet { background: rgba(91,79,233,0.1); }
+.ri-amber  { background: rgba(245,158,11,0.1); }
+.ri-coral  { background: rgba(255,107,74,0.1); }
+.ri-blue   { background: rgba(59,130,246,0.1); }
+.ri-green  { background: rgba(16,185,129,0.1); }
+.ri-pink   { background: rgba(236,72,153,0.1); }
+.ri-sky    { background: rgba(14,165,233,0.1); }
+
+.reason-card h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 17px; font-weight: 800; color: var(--ink); margin-bottom: 10px;
+}
+.reason-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* ─── HIGHLIGHT STRIP ────────────────────────────────────────── */
+#highlight {
+  background: var(--ink-2); color: white;
+  padding: 90px 5%;
+}
+#highlight .s-title { color: white; }
+#highlight .eyebrow { color: var(--teal); }
+#highlight .s-sub { color: rgba(255,255,255,0.6); }
+
+.highlight-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 1280px; margin: 0 auto;
+}
+.hl-card {
+  background: rgba(255,255,255,0.06); border-radius: var(--r-lg);
+  padding: 28px 24px;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: flex-start; gap: 16px;
+  transition: all 0.3s;
+}
+.hl-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(0,201,167,0.3); transform: translateY(-3px); }
+.hl-check {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  background: var(--grad-primary);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 15px; margin-top: 2px;
+  box-shadow: var(--shadow-teal);
+}
+.hl-card h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px; font-weight: 800; color: white; margin-bottom: 5px;
+}
+.hl-card p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+/* ─── STATS BAR ──────────────────────────────────────────────── */
+#stats-bar { background: white; padding: 60px 5%; }
+.stats-bar-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+  text-align: center;
+}
+.stat-item {}
+.stat-num-big {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 52px; font-weight: 900; line-height: 1;
+  background: var(--grad-hero); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-lbl-big { font-size: 15px; color: var(--muted); font-weight: 600; margin-top: 8px; }
+
+/* ─── WHAT MAKES US DIFFERENT ────────────────────────────────── */
+#different { background: var(--surface); }
+
+.diff-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+}
+.diff-list { display: flex; flex-direction: column; gap: 14px; }
+.diff-item {
+  display: flex; align-items: center; gap: 14px;
+  background: white; border-radius: var(--r); padding: 18px 22px;
+  border: 1px solid var(--border); transition: all 0.25s;
+}
+.diff-item:hover { border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-glow); transform: translateX(4px); }
+.diff-tick {
+  width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0;
+  background: rgba(0,201,167,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--teal); font-size: 14px;
+}
+.diff-item span { font-size: 14px; font-weight: 700; color: var(--ink); }
+
+.diff-visual { display: flex; justify-content: center; }
+.diff-card {
+  background: white; border-radius: var(--r-xl);
+  padding: 40px; box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border); width: 100%; max-width: 400px;
+  position: relative;
+}
+.diff-card-head {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
+}
+.diff-avatar {
+  width: 54px; height: 54px; border-radius: 16px;
+  background: var(--grad-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; box-shadow: var(--shadow-teal);
+}
+.diff-card-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.diff-card-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 800; color: var(--ink); }
+
+.benefit-list { display: flex; flex-direction: column; gap: 14px; }
+.benefit-row {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 14px; color: var(--slate); font-weight: 500;
+}
+.benefit-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--grad-primary); flex-shrink: 0;
+}
+.diff-badge {
+  position: absolute; top: -18px; right: -18px;
+  background: var(--amber); color: white;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px; font-weight: 900; padding: 8px 14px; border-radius: 10px;
+  box-shadow: var(--shadow-md); transform: rotate(3deg);
+}
+
+/* ─── CAREER JOURNEY ─────────────────────────────────────────── */
+#journey { background: white; }
+
+.journey-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  max-width: 1280px; margin: 0 auto; position: relative;
+}
+.journey-steps::before {
+  content: ''; position: absolute;
+  top: 36px; left: calc(12.5% + 20px); right: calc(12.5% + 20px);
+  height: 2px; background: var(--border); z-index: 0;
+}
+.journey-step {
+  text-align: center; position: relative; z-index: 1;
+  background: white; padding: 12px 0;
+}
+.step-num {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: white; border: 3px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 24px; font-weight: 900;
+  margin: 0 auto 20px; position: relative;
+  transition: all 0.3s;
+}
+.journey-step:hover .step-num {
+  background: var(--grad-primary); color: white; border-color: transparent;
+  box-shadow: var(--shadow-teal);
+}
+.step-emoji { font-size: 28px; }
+.journey-step h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px; font-weight: 800; color: var(--ink); margin-bottom: 8px;
+}
+.journey-step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ─── CTA BANNER ─────────────────────────────────────────────── */
+#cta {
+  background: linear-gradient(135deg, #0B0F1A 0%, #1e1555 50%, #0B0F1A 100%);
+  padding: 90px 5%; text-align: center; position: relative; overflow: hidden;
+}
+#cta::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1.2' fill='%2300c9a7' fill-opacity='0.05'/%3E%3C/svg%3E");
+}
+.cta-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+.cta-pill {
+  display: inline-block;
+  background: rgba(0,201,167,0.12); color: var(--teal);
+  border: 1px solid rgba(0,201,167,0.25); border-radius: 100px;
+  font-size: 13px; font-weight: 700; padding: 7px 18px; margin-bottom: 28px;
+}
+.cta-inner .s-title { color: white; margin-bottom: 18px; }
+.cta-inner .s-sub { color: rgba(255,255,255,0.65); margin: 0 auto 40px; }
+.cta-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.btn-cta-white {
+  background: white; color: var(--ink);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800; font-size: 16px;
+  padding: 16px 36px; border-radius: 12px;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3); transition: all 0.25s;
+}
+.btn-cta-white:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.35); }
+.btn-outline-white {
+  background: transparent; color: white;
+  border: 2px solid rgba(255,255,255,0.35);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700; font-size: 16px;
+  padding: 14px 32px; border-radius: 12px;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.25s;
+}
+.btn-outline-white:hover { background: rgba(255,255,255,0.08); border-color: white; transform: translateY(-2px); }
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+footer { background: var(--ink); padding: 60px 5% 0; }
+.footer-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+  padding-bottom: 48px;
+}
+.footer-brand-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.footer-logo {
+  width: 40px; height: 40px; border-radius: 11px;
+  background: var(--grad-primary);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900; font-size: 14px; box-shadow: var(--shadow-teal);
+}
+.footer-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800; font-size: 17px; color: white; letter-spacing: -0.3px;
+}
+.footer-about { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 24px; }
+.footer-social { display: flex; gap: 10px; }
+.social-btn {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; text-decoration: none; transition: all 0.2s; border: 1px solid rgba(255,255,255,0.1);
+}
+.social-btn:hover { background: var(--teal); color: white; border-color: var(--teal); }
+
+.footer-col h5 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px; font-weight: 800; color: white;
+  text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 18px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a {
+  text-decoration: none; font-size: 13px; color: rgba(255,255,255,0.45);
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: var(--teal); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 20px 0; max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+  font-size: 12px; color: rgba(255,255,255,0.3);
+}
+.footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--teal); }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .reasons-grid { grid-template-columns: repeat(2, 1fr); }
+  .highlight-grid { grid-template-columns: repeat(2, 1fr); }
+  .diff-inner { grid-template-columns: 1fr; gap: 48px; }
+  .diff-visual { display: none; }
+  .journey-steps { grid-template-columns: repeat(2, 1fr); }
+  .journey-steps::before { display: none; }
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links, .btn-nav-enroll { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 70px 5%; }
+  .reasons-grid { grid-template-columns: 1fr; }
+  .highlight-grid { grid-template-columns: 1fr; }
+  .journey-steps { grid-template-columns: 1fr; }
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+.nav-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+}
+
+.nav-logo{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+}
+
+.brand-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.1;
+}
+
+.brand-text h3{
+    margin:0;
+    font-size:26px;
+    font-weight:800;
+    color:#0f172a;
+}
+
+.brand-text span{
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#64748b;
+}
+
+
+
+
+</style>
+</head>
+<body>
+
+
+<!-- ═══ NAVBAR ══════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <img src="images/ysify-logo.png" alt="YSIFY Logo" class="nav-logo">
+
+    <div class="brand-text">
+        <h3>YSIFY</h3>
+        <span>Skills & Innovation Academy</span>
+    </div>
+</a>
+  <ul class="nav-links">
+    <li><a href="why-ysify.html" class="active">Why YSIFY</a></li>
+    <li><a href="ysify_courses.html">Courses</a></li>
+    <li><a href="ysify_internship.html">Internship</a></li>
+    <li><a href="ysify_placement.html">Placements</a></li>
+    <li><a href="ysify_techstack.html">Tech Stack</a></li>
+    <li><a href="ysify_about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="btn-nav-enroll">
+    <i class="fas fa-bolt"></i> Enroll Now
+  </a>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="why-ysify.html"          onclick="closeMobile()">🎯 Why YSIFY</a>
+  <a href="ysify_courses.html"      onclick="closeMobile()">📚 Courses</a>
+  <a href="ysify_internship.html"   onclick="closeMobile()">💼 Internship</a>
+  <a href="ysify_placement.html"    onclick="closeMobile()">🚀 Placements</a>
+  <a href="ysify_techstack.html" onclick="closeMobile()">🛠️ Tech Stack</a>
+  <a href="ysify_about.html"        onclick="closeMobile()">ℹ️ About</a>
+  <a href="contact.html"      onclick="closeMobile()">📞 Contact</a>
+  <a href="contact.html"      onclick="closeMobile()" class="m-enroll">⚡ Enroll Now — Free Consultation</a>
+</div>
+<!-- ═══ PAGE HERO ════════════════════════════════════════════════ -->
+<section id="page-hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="hero-inner">
+    <div class="hero-badge sr">
+      <div class="badge-pulse"></div>
+      Surat's #1 Career-First Tech Academy
+    </div>
+    <h1 class="hero-h1 sr">
+      Why Students <span class="line-grad">Choose YSIFY</span><br>Over Everything Else
+    </h1>
+    <p class="hero-p sr">
+      We don't just teach technology — we build careers. Discover what makes YSIFY Skills & Innovation Academy the smart choice for anyone serious about tech in 2025.
+    </p>
+    <div class="hero-btns sr">
+      <a href="contact.html" class="btn btn-primary"><i class="fas fa-bolt"></i> Start Learning Today</a>
+      <a href="ysify_courses.html" class="btn btn-secondary"><i class="fas fa-th-large"></i> Explore Courses</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ 12 REASONS GRID ══════════════════════════════════════════ -->
+<section id="reasons">
+  <div class="s-inner">
+    <div class="s-header center sr">
+      <div class="eyebrow"><div class="eyebrow-dot"></div> Why Choose Us</div>
+      <h2 class="s-title">12 Reasons to Join<br><span class="g">YSIFY Academy</span></h2>
+      <p class="s-sub">Every feature is designed with one goal: getting you career-ready and job-placed faster than anywhere else.</p>
+    </div>
+    <div class="reasons-grid">
+
+      <div class="reason-card sr">
+        <div class="reason-icon ri-violet"><i class="fas fa-rocket" style="color:var(--violet)"></i></div>
+        <h3>🎯 Career-Focused Learning</h3>
+        <p>Learn from fundamentals to advanced industry-level skills with a structured roadmap built for beginners and working professionals alike. Every module is aligned to what employers actually hire for.</p>
+      </div>
+
+      <div class="reason-card sr">
+        <div class="reason-icon ri-teal"><i class="fas fa-briefcase" style="color:var(--teal)"></i></div>
+        <h3>💼 Job Application Support</h3>
+        <p>Get exclusive access to curated job opportunities, company databases, and personalized guidance to apply effectively for relevant roles — so you spend less time searching and more time interviewing.</p>
+      </div>
+
+      <div class="reason-card sr">
+        <div class="reason-icon ri-amber"><i class="fas fa-file-alt" style="color:var(--amber)"></i></div>
+        <h3>📄 Professional Resume Building</h3>
+        <p>Build ATS-friendly resumes and standout portfolios that dramatically increase your chances of getting shortlisted by recruiters at top companies — both local and global.</p>
+      </div>
+
+      <div class="reason-card sr">
+        <div class="reason-icon ri-blue"><i class="fas fa-globe" style="color:#3B82F6"></i></div>
+        <h3>🌐 LinkedIn & Freelancing Optimization</h3>
+        <p>Receive step-by-step guidance for creating professional profiles on LinkedIn, Upwork, Fiverr, and other platforms to unlock remote and freelance opportunities worldwide.</p>
+      </div>
+
+      <div class="reason-card sr">
+        <div class="reason-icon ri-teal"><i class="fas fa-trophy" style="color:var(--teal)"></i></div>
+        <h3>🏆 Industry Certification Support</h3>
+        <p>Earn YSIFY Academy certifications and receive expert guidance on high-value, industry-recognized certifications that add real credibility to your professional profile.</p>
+      </div>
+
+      <div class="reason-card sr">
+        <div class="reason-icon ri-green"><i class="fas fa-rupee-sign" style="color:#10B981"></i></div>
+        <h3>💰 Affordable & Accessible Training</h3>
+        <p>High-quality technology education at student-friendly fees — without ever compromising on learning outcomes. We believe premium tech skills should be accessible to everyone.</p>
+      </div>
+
+      <div class="reason-card sr">
+        <div class="reason-icon ri-coral"><i class="fas fa-laptop-code" style="color:var(--coral)"></i></div>
+        <h3>🚀 Internship & Live Project Experience</h3>
+        <p>Work on real industry projects and gain hands-on exposure through structured internship opportunities. Your portfolio will reflect actual work — not just theory.</p>
+      </div>
+
+      <div class="reason-card sr">
+        <div class="reason-icon ri-violet"><i class="fas fa-earth-americas" style="color:var(--violet)"></i></div>
+        <h3>🌍 Global Career Opportunities</h3>
+        <p>Master the strategies, tools, and platforms that help students explore remote jobs and international career opportunities — from Surat to Silicon Valley.</p>
+      </div>
+
+      <div class="reason-card sr">
+        <div class="reason-icon ri-amber"><i class="fas fa-microphone" style="color:var(--amber)"></i></div>
+        <h3>🎤 Mock Interviews & Career Prep</h3>
+        <p>Practice technical and HR interview rounds with industry mentors to build real confidence. Walk into every interview prepared, polished, and ready to impress.</p>
+      </div>
+
+      <div class="reason-card sr">
+        <div class="reason-icon ri-teal"><i class="fas fa-user-tie" style="color:var(--teal)"></i></div>
+        <h3>🤝 Personalized Mentorship</h3>
+        <p>Receive continuous one-on-one guidance, doubt-solving support, and career mentorship throughout your entire learning journey — not just during class hours.</p>
+      </div>
+
+      <div class="reason-card sr">
+        <div class="reason-icon ri-blue"><i class="fas fa-flask" style="color:#3B82F6"></i></div>
+        <h3>📚 Practical Learning Approach</h3>
+        <p>Focus on real-world implementation, hands-on exercises, case studies, and project-based learning that gives you skills you can actually use on Day 1 of your job.</p>
+      </div>
+
+      <div class="reason-card sr">
+        <div class="reason-icon ri-pink"><i class="fas fa-brain" style="color:#EC4899"></i></div>
+        <h3>🔥 Future-Ready Skills</h3>
+        <p>Master in-demand technologies including AI, Python, Web Development, .NET, Automation, and more — the exact skills that today's top employers are actively hiring for.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT MAKES US DIFFERENT ══════════════════════════════════ -->
+<section id="different">
+  <div class="diff-inner">
+    <div>
+      <div class="s-header sr">
+        <div class="eyebrow"><div class="eyebrow-dot"></div> Our Edge</div>
+        <h2 class="s-title">What Makes <span class="g">YSIFY Different?</span></h2>
+        <p class="s-sub">Every item on this list is a real commitment — not a marketing claim. This is how we operate every single day.</p>
+      </div>
+      <div class="diff-list">
+        <div class="diff-item sr"><div class="diff-tick"><i class="fas fa-check"></i></div><span>Learn From Basic To Industry Expert Level</span></div>
+        <div class="diff-item sr"><div class="diff-tick"><i class="fas fa-check"></i></div><span>Resume Building & Portfolio Development</span></div>
+        <div class="diff-item sr"><div class="diff-tick"><i class="fas fa-check"></i></div><span>LinkedIn Profile Optimization</span></div>
+        <div class="diff-item sr"><div class="diff-tick"><i class="fas fa-check"></i></div><span>Freelancing Guidance — Upwork & Fiverr</span></div>
+        <div class="diff-item sr"><div class="diff-tick"><i class="fas fa-check"></i></div><span>Internship Opportunities with Real Projects</span></div>
+        <div class="diff-item sr"><div class="diff-tick"><i class="fas fa-check"></i></div><span>Mock Interviews — Technical & HR Rounds</span></div>
+        <div class="diff-item sr"><div class="diff-tick"><i class="fas fa-check"></i></div><span>Personalized Career Mentorship</span></div>
+        <div class="diff-item sr"><div class="diff-tick"><i class="fas fa-check"></i></div><span>Industry-Oriented Live Projects</span></div>
+        <div class="diff-item sr"><div class="diff-tick"><i class="fas fa-check"></i></div><span>Affordable Fees — No Compromise on Quality</span></div>
+        <div class="diff-item sr"><div class="diff-tick"><i class="fas fa-check"></i></div><span>Remote Job Application Guidance</span></div>
+        <div class="diff-item sr"><div class="diff-tick"><i class="fas fa-check"></i></div><span>Global Career Preparation Strategies</span></div>
+        <div class="diff-item sr"><div class="diff-tick"><i class="fas fa-check"></i></div><span>Industry & Academy Certification Support</span></div>
+      </div>
+    </div>
+    <div class="diff-visual sr">
+      <div class="diff-card">
+        <div class="diff-badge">🏆 #1 in Surat</div>
+        <div class="diff-card-head">
+          <div class="diff-avatar">🎓</div>
+          <div>
+            <div class="diff-card-label">Your Future Starts Here</div>
+            <div class="diff-card-name">YSIFY Complete Package</div>
+          </div>
+        </div>
+        <div class="benefit-list">
+          <div class="benefit-row"><div class="benefit-dot"></div>Career-Focused Curriculum</div>
+          <div class="benefit-row"><div class="benefit-dot"></div>Resume + LinkedIn Makeover</div>
+          <div class="benefit-row"><div class="benefit-dot"></div>Live Project + Internship</div>
+          <div class="benefit-row"><div class="benefit-dot"></div>Mock Interviews + Job Prep</div>
+          <div class="benefit-row"><div class="benefit-dot"></div>Freelancing & Remote Jobs</div>
+          <div class="benefit-row"><div class="benefit-dot"></div>Certification Guidance</div>
+          <div class="benefit-row"><div class="benefit-dot"></div>Ongoing Mentorship Support</div>
+          <div class="benefit-row"><div class="benefit-dot"></div>Global Career Strategies</div>
+        </div>
+        <a href="contact.html" style="display:block;text-align:center;margin-top:28px;">
+          <span class="btn btn-primary" style="width:100%;justify-content:center;font-size:14px;">
+            <i class="fas fa-bolt"></i> Get Started — Free Consultation
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DARK HIGHLIGHTS ══════════════════════════════════════════ -->
+<section id="highlight">
+  <div class="s-inner">
+    <div class="s-header center sr">
+      <div class="eyebrow"><div class="eyebrow-dot"></div> Everything Included</div>
+      <h2 class="s-title">Every Tool You Need to<br><span class="g">Launch Your Career</span></h2>
+      <p class="s-sub">Our complete career ecosystem is built to take you from zero to employed — with support at every step.</p>
+    </div>
+    <div class="highlight-grid">
+
+      <div class="hl-card sr">
+        <div class="hl-check"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+          <h4>Structured Learning Path</h4>
+        </div>
+      </div>
+
+      <div class="hl-card sr">
+        <div class="hl-check"><i class="fas fa-file-alt"></i></div>
+        <div>
+          <h4>ATS-Friendly Resume Building</h4>
+        </div>
+      </div>
+
+      <div class="hl-card sr">
+        <div class="hl-check"><i class="fab fa-linkedin"></i></div>
+        <div>
+          <h4>LinkedIn Profile Optimization</h4>
+        </div>
+      </div>
+
+      <div class="hl-card sr">
+        <div class="hl-check"><i class="fas fa-laptop"></i></div>
+        <div>
+          <h4>Freelancing on Upwork & Fiverr</h4>
+        </div>
+      </div>
+
+      <div class="hl-card sr">
+        <div class="hl-check"><i class="fas fa-code-branch"></i></div>
+        <div>
+          <h4>Live Projects & Internships</h4>
+        </div>
+      </div>
+
+      <div class="hl-card sr">
+        <div class="hl-check"><i class="fas fa-comments"></i></div>
+        <div>
+          <h4>Mock Interviews — Tech & HR</h4>
+        </div>
+      </div>
+
+      <div class="hl-card sr">
+        <div class="hl-check"><i class="fas fa-chalkboard-teacher"></i></div>
+        <div>
+          <h4>One-on-One Career Mentorship</h4>
+        </div>
+      </div>
+
+      <div class="hl-card sr">
+        <div class="hl-check"><i class="fas fa-earth-americas"></i></div>
+        <div>
+          <h4>Global & Remote Job Readiness</h4>
+      </div>
+      </div>
+
+      <div class="hl-card sr">
+        <div class="hl-check"><i class="fas fa-award"></i></div>
+        <div>
+          <h4>Certification & Industry Recognition</h4>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CAREER JOURNEY ═══════════════════════════════════════════ -->
+<section id="journey">
+  <div class="s-inner">
+    <div class="s-header center sr">
+      <div class="eyebrow"><div class="eyebrow-dot"></div> Your Path</div>
+      <h2 class="s-title">Your Career Journey<br><span class="g">With YSIFY</span></h2>
+      <p class="s-sub">From zero experience to job-ready professional — here's exactly how we get you there.</p>
+    </div>
+    <div class="journey-steps">
+      <div class="journey-step sr">
+        <div class="step-num"><span class="step-emoji">📚</span></div>
+        <h4>Learn the Skills</h4>
+        <p>Master in-demand technologies from fundamentals to advanced with our structured, project-based curriculum.</p>
+      </div>
+      <div class="journey-step sr">
+        <div class="step-num"><span class="step-emoji">🛠️</span></div>
+        <h4>Build Real Projects</h4>
+        <p>Apply your skills on live industry projects and internship programs that give you a portfolio worth showing.</p>
+      </div>
+      <div class="journey-step sr">
+        <div class="step-num"><span class="step-emoji">🎯</span></div>
+        <h4>Get Career-Ready</h4>
+        <p>Polish your resume, LinkedIn, and interview skills through mock sessions and personalized mentorship.</p>
+      </div>
+      <div class="journey-step sr">
+        <div class="step-num"><span class="step-emoji">🚀</span></div>
+        <h4>Land Your Dream Job</h4>
+        <p>Apply with confidence to local, remote, and global roles using our curated job board and application support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <div class="footer-brand-row">
+          <span class="footer-name">YSIFY Academy</span>
+        </div>
+        <div class="footer-about">Surat's premier skills academy for AI, software development &amp; career growth. Empowering minds. Building futures.</div>
+      </div>
+      <div class="footer-social">
+        <a href="https://wa.me/919904230962" class="social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/ysify_academy/" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/ysify-skills-innovation-academy/?" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.youtube.com/@ysifyacademy" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Programs</h5>
+      <ul>
+        <li><a href="ysify_courses.html">AI Foundation</a></li>
+        <li><a href="ysify_courses.html">AI Automation</a></li>
+        <li><a href="ysify_courses.html">AI Agent Dev</a></li>
+        <li><a href="ysify_courses.html">Web Development</a></li>
+        <li><a href="ysify_courses.html">Python Dev</a></li>
+        <li><a href="ysify_courses.html">.NET Core</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Academy</h5>
+      <ul>
+        <li><a href="why-ysify.html">Why YSIFY</a></li>
+        <li><a href="ysify_internship.html">Internship</a></li>
+        <li><a href="ysify_placement.html">Placements</a></li>
+        <li><a href="ysify_about.html">About Us</a></li>
+        <li><a href="ysify_techstack.html">Tech Stack</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+919904230962">+91 99042 30962</a></li>
+        <li><a href="mailto:info@ysify.in">info@ysify.in</a></li>
+        <li><a href="contact.html">C1-206, Pragati IT Park,<br>Mota Varachha, Surat</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ysify Skills &amp; Innovation Academy. All rights reserved.</span>
+    <div style="display:flex;gap:20px">
+      <a href="https://ysify.in/privacy-policy" target="_blank">Privacy Policy</a>
+      <a href="https://ysify.in/terms-of-use" target="_blank">Terms of Use</a>
+      <a href="contact.html">Enroll Now</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+function sendWhatsApp() {
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let email = document.getElementById("email").value;
+    let course = document.getElementById("course").value;
+    let message = document.getElementById("message").value;
+
+    if(name === "" || phone === "" || email === "" || course === "") {
+        alert("Please fill all required fields.");
+        return;
+    }
+
+    let whatsappMessage =
+`🎓 New Course Inquiry
+
+👤 Name: ${name}
+
+📞 Phone: ${phone}
+
+📧 Email: ${email}
+
+📚 Course: ${course}
+
+💬 Message:
+${message}`;
+
+    let whatsappURL =
+`https://wa.me/919904230962?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappURL, "_blank");
+}
+/* Navbar scroll */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+/* Mobile menu */
+document.getElementById('hamburgerBtn').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+function closeMobile() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+/* Scroll reveal */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 70);
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.sr').forEach(el => revealObs.observe(el));
+
+/* Counter animation */
+function runCounters(els) {
+  els.forEach(el => {
+    const target = parseInt(el.dataset.target);
+    const dur = 1800;
+    const step = target / (dur / 16);
+    let cur = 0;
+    const t = setInterval(() => {
+      cur = Math.min(cur + step, target);
+      el.textContent = Math.floor(cur);
+      if (cur >= target) clearInterval(t);
+    }, 16);
+  });
+}
+let statsDone = false;
+const statsObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !statsDone) {
+    statsDone = true;
+    runCounters(document.querySelectorAll('.counter'));
+  }
+}, { threshold: 0.3 });
+const statsEl = document.getElementById('stats-bar');
+if (statsEl) statsObs.observe(statsEl);
+</script>
+</body>
+</html>

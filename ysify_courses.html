@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programs & Courses — YSIFY Skills & Innovation Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ─── TOKENS ─────────────────────────────────────────────────── */
+:root {
+  --ink:     #0B0F1A;
+  --ink-2:   #1C2235;
+  --slate:   #4A5568;
+  --muted:   #8492A6;
+  --border:  #E4E9F0;
+  --surface: #F7F9FC;
+  --white:   #FFFFFF;
+
+  --teal:        #00C9A7;
+  --teal-d:      #00A98A;
+  --teal-glow:   rgba(0,201,167,0.18);
+  --violet:      #5B4FE9;
+  --violet-d:    #4338CA;
+  --violet-glow: rgba(91,79,233,0.18);
+  --amber:       #F59E0B;
+  --amber-glow:  rgba(245,158,11,0.15);
+  --coral:       #FF6B4A;
+
+  --grad-primary: linear-gradient(135deg, var(--teal), var(--violet));
+  --grad-hero:    linear-gradient(135deg, #05f0c0 0%, #5B4FE9 100%);
+
+  --shadow-xs: 0 1px 4px rgba(11,15,26,0.06);
+  --shadow-sm: 0 2px 12px rgba(11,15,26,0.08);
+  --shadow-md: 0 8px 32px rgba(11,15,26,0.10);
+  --shadow-lg: 0 20px 60px rgba(11,15,26,0.13);
+  --shadow-teal:   0 8px 32px rgba(0,201,167,0.28);
+  --shadow-violet: 0 8px 32px rgba(91,79,233,0.28);
+
+  --r:    14px;
+  --r-lg: 22px;
+  --r-xl: 32px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+img { max-width: 100%; }
+
+/* ─── SCROLL REVEAL ─────────────────────────────────────────── */
+.sr { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.sr.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── NAVBAR ─────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  height: 70px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%;
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: var(--shadow-md); }
+
+.nav-brand {
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
+}
+.nav-logo-mark {
+  width: 40px; height: 40px; border-radius: 11px;
+  background: var(--grad-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900; font-size: 18px; color: #fff;
+  letter-spacing: -0.5px;
+}
+.nav-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.nav-brand-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800; font-size: 15px; color: var(--ink);
+  letter-spacing: -0.3px;
+}
+.nav-brand-sub {
+  font-size: 10px; color: var(--muted); font-weight: 500; letter-spacing: 0.3px;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 6px; list-style: none;
+}
+.nav-links a {
+  text-decoration: none; color: var(--slate); font-size: 14px; font-weight: 500;
+  padding: 7px 14px; border-radius: 8px; transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--ink); background: var(--surface); }
+.nav-links a.active { color: var(--teal); font-weight: 600; }
+.nav-cta {
+  display: flex; align-items: center; gap: 10px;
+}
+.btn-nav {
+  padding: 9px 22px; border-radius: 10px; font-size: 13.5px; font-weight: 600;
+  cursor: pointer; text-decoration: none; transition: all 0.22s;
+  border: none;
+}
+.btn-outline {
+  background: transparent; border: 1.5px solid var(--border); color: var(--ink);
+}
+.btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+.btn-primary {
+  background: var(--grad-primary); color: #fff;
+  box-shadow: 0 4px 16px rgba(0,201,167,0.30);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: var(--shadow-teal); }
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+.courses-hero {
+  margin-top: 70px;
+  padding: 90px 5% 80px;
+  background: linear-gradient(160deg, #f0fdf9 0%, #f5f3ff 60%, #fff7ed 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.courses-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% -10%, rgba(0,201,167,0.13) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 50% at 80% 100%, rgba(91,79,233,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--teal-glow); color: var(--teal-d);
+  border: 1px solid rgba(0,201,167,0.25);
+  padding: 6px 16px; border-radius: 100px; font-size: 12.5px; font-weight: 600;
+  letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 24px;
+}
+.hero-eyebrow i { font-size: 11px; }
+.courses-hero h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 900; line-height: 1.15;
+  color: var(--ink); letter-spacing: -1.5px;
+  margin-bottom: 20px;
+  max-width: 800px; margin-left: auto; margin-right: auto;
+}
+.courses-hero h1 span {
+  background: var(--grad-hero);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.courses-hero p {
+  font-size: 1.05rem; color: var(--slate); max-width: 600px;
+  margin: 0 auto 36px; line-height: 1.75;
+}
+.hero-stats {
+  display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.hero-stat { text-align: center; }
+.hero-stat-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.9rem; font-weight: 900; color: var(--ink); line-height: 1;
+}
+.hero-stat-num span { background: var(--grad-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-stat-label { font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 4px; letter-spacing: 0.3px; }
+.hero-actions {
+  display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+}
+.btn-hero-primary {
+  padding: 14px 32px; border-radius: 12px; font-size: 15px; font-weight: 700;
+  background: var(--grad-primary); color: #fff; border: none; cursor: pointer;
+  text-decoration: none; box-shadow: var(--shadow-teal); transition: all 0.22s;
+}
+.btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,201,167,0.4); }
+.btn-hero-ghost {
+  padding: 14px 32px; border-radius: 12px; font-size: 15px; font-weight: 600;
+  background: #fff; color: var(--ink); border: 1.5px solid var(--border);
+  cursor: pointer; text-decoration: none; transition: all 0.22s;
+}
+.btn-hero-ghost:hover { border-color: var(--violet); color: var(--violet); transform: translateY(-1px); }
+
+/* ─── FILTER TABS ─────────────────────────────────────────────── */
+.filter-section {
+  padding: 40px 5% 20px;
+  background: var(--white);
+  position: sticky; top: 70px; z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+.filter-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 9px 22px; border-radius: 100px; font-size: 13.5px; font-weight: 600;
+  border: 1.5px solid var(--border); background: var(--white); color: var(--slate);
+  cursor: pointer; transition: all 0.2s;
+}
+.filter-btn:hover { border-color: var(--teal); color: var(--teal); }
+.filter-btn.active {
+  background: var(--grad-primary); color: #fff; border-color: transparent;
+  box-shadow: 0 4px 16px rgba(0,201,167,0.30);
+}
+
+/* ─── SECTION WRAPPER ────────────────────────────────────────── */
+.section { padding: 80px 5%; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11.5px; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+}
+.section-label::before {
+  content: ''; width: 18px; height: 2px; background: var(--teal); border-radius: 2px;
+}
+.section-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800;
+  color: var(--ink); letter-spacing: -0.8px; line-height: 1.25;
+  margin-bottom: 10px;
+}
+.section-sub { font-size: 1rem; color: var(--slate); line-height: 1.7; max-width: 560px; }
+
+/* ─── CATEGORY TRACK HEADER ──────────────────────────────────── */
+.category-header {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 32px; padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.cat-icon-wrap {
+  width: 54px; height: 54px; border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.cat-icon-wrap.ai { background: var(--teal-glow); color: var(--teal-d); }
+.cat-icon-wrap.dev { background: var(--violet-glow); color: var(--violet); }
+.cat-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--ink); letter-spacing: -0.4px; }
+.cat-subtitle { font-size: 13px; color: var(--muted); font-weight: 500; }
+.cat-badge {
+  margin-left: auto; padding: 6px 14px; border-radius: 100px;
+  font-size: 12px; font-weight: 700;
+}
+.cat-badge.ai { background: var(--teal-glow); color: var(--teal-d); }
+.cat-badge.dev { background: var(--violet-glow); color: var(--violet); }
+
+/* ─── COURSE GRID ─────────────────────────────────────────────── */
+.courses-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 24px; margin-bottom: 72px;
+}
+
+/* ─── COURSE CARD ─────────────────────────────────────────────── */
+.course-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  position: relative;
+  display: flex; flex-direction: column;
+}
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+.course-card:hover .card-header.ai { box-shadow: 0 0 0 1px var(--teal); }
+.course-card:hover .card-header.dev { box-shadow: 0 0 0 1px var(--violet); }
+
+.card-header {
+  padding: 28px 26px 22px;
+  position: relative; overflow: hidden;
+}
+.card-header.ai {
+  background: linear-gradient(135deg, #effaf7 0%, #f0f4ff 100%);
+}
+.card-header.dev {
+  background: linear-gradient(135deg, #f5f3ff 0%, #fdf2ff 100%);
+}
+.card-header-bg {
+  position: absolute; right: -20px; top: -20px;
+  width: 110px; height: 110px; border-radius: 50%;
+  opacity: 0.18;
+}
+.card-header.ai .card-header-bg { background: var(--teal); }
+.card-header.dev .card-header-bg { background: var(--violet); }
+
+.card-icon-wrap {
+  width: 48px; height: 48px; border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 16px; position: relative; z-index: 1;
+}
+.card-icon-wrap.ai { background: rgba(0,201,167,0.2); color: var(--teal-d); }
+.card-icon-wrap.dev { background: rgba(91,79,233,0.18); color: var(--violet); }
+
+.card-tags {
+  display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap;
+  position: relative; z-index: 1;
+}
+.tag {
+  padding: 3px 10px; border-radius: 100px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.3px;
+}
+.tag.ai { background: rgba(0,201,167,0.15); color: var(--teal-d); }
+.tag.dev { background: rgba(91,79,233,0.14); color: var(--violet); }
+.tag.duration { background: var(--amber-glow); color: #B45309; }
+.tag.level { background: rgba(255,107,74,0.12); color: #C2410C; }
+
+.card-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.1rem; font-weight: 800; color: var(--ink);
+  letter-spacing: -0.3px; line-height: 1.3;
+  position: relative; z-index: 1;
+}
+
+.card-body {
+  padding: 20px 26px 24px;
+  flex: 1; display: flex; flex-direction: column;
+}
+.card-desc {
+  font-size: 13.5px; color: var(--slate); line-height: 1.65; margin-bottom: 18px;
+}
+.card-skills {
+  list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px;
+  flex: 1;
+}
+.card-skills li {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 13px; color: var(--slate);
+}
+.card-skills li i {
+  width: 16px; text-align: center; flex-shrink: 0;
+}
+.card-skills li i.ai-icon { color: var(--teal); }
+.card-skills li i.dev-icon { color: var(--violet); }
+
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 16px; border-top: 1px solid var(--border);
+  gap: 10px;
+}
+.card-duration-badge {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12.5px; color: var(--muted); font-weight: 500;
+}
+.card-duration-badge i { color: var(--amber); }
+.card-cta {
+  padding: 9px 18px; border-radius: 9px; font-size: 13px; font-weight: 700;
+  text-decoration: none; border: none; cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; gap: 6px;
+}
+.card-cta.ai {
+  background: var(--teal-glow); color: var(--teal-d);
+}
+.card-cta.ai:hover { background: var(--teal); color: #fff; }
+.card-cta.dev {
+  background: var(--violet-glow); color: var(--violet);
+}
+.card-cta.dev:hover { background: var(--violet); color: #fff; }
+
+/* ─── FEATURED / FLAGSHIP CARD ───────────────────────────────── */
+.course-card.flagship {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: stretch;
+  border-color: transparent;
+  background: linear-gradient(var(--white), var(--white)) padding-box,
+              var(--grad-primary) border-box;
+  border: 2px solid transparent;
+  box-shadow: var(--shadow-md);
+}
+@media (max-width: 700px) { .course-card.flagship { flex-direction: column; } }
+.course-card.flagship .card-header {
+  width: 40%; min-width: 260px; flex-shrink: 0;
+  background: linear-gradient(135deg, #0d1f1b 0%, #1a1040 100%);
+  padding: 36px 30px;
+}
+.course-card.flagship .card-header-bg { background: var(--teal); opacity: 0.25; }
+.course-card.flagship .card-title { color: #fff; font-size: 1.4rem; }
+.course-card.flagship .tag.ai { background: rgba(0,201,167,0.25); color: #00e0b8; }
+.course-card.flagship .tag.duration { background: rgba(245,158,11,0.2); color: #FCD34D; }
+.course-card.flagship .tag.level { background: rgba(255,107,74,0.2); color: #FCA5A5; }
+.flagship-badge {
+  position: absolute; top: 18px; right: 18px;
+  background: var(--grad-primary);
+  color: #fff; font-size: 10.5px; font-weight: 700;
+  padding: 4px 12px; border-radius: 100px; letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.flagship-card-body {
+  flex: 1; padding: 32px 30px;
+  display: flex; flex-direction: column;
+}
+.flagship-card-body .card-desc { font-size: 14.5px; color: var(--slate); }
+.flagship-skills-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin: 20px 0;
+  flex: 1;
+}
+.flagship-skills-grid li {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--slate); list-style: none;
+}
+.flagship-skills-grid li i { color: var(--teal); }
+.flagship-footer {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding-top: 18px; border-top: 1px solid var(--border);
+}
+.flagship-cta {
+  padding: 11px 26px; border-radius: 10px; font-size: 14px; font-weight: 700;
+  background: var(--grad-primary); color: #fff; border: none; cursor: pointer;
+  text-decoration: none; box-shadow: var(--shadow-teal); transition: all 0.22s;
+  display: flex; align-items: center; gap: 8px;
+}
+.flagship-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,201,167,0.4); }
+
+/* ─── WHAT'S INCLUDED ─────────────────────────────────────────── */
+.included-section {
+  padding: 80px 5%;
+  background: var(--surface);
+}
+.included-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px; max-width: 1100px; margin: 48px auto 0;
+}
+.included-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px 24px;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.included-card::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px; background: var(--grad-primary);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.included-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: transparent; }
+.included-card:hover::before { transform: scaleX(1); }
+.included-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; margin-bottom: 14px;
+}
+.included-card:nth-child(odd) .included-icon { background: var(--teal-glow); color: var(--teal-d); }
+.included-card:nth-child(even) .included-icon { background: var(--violet-glow); color: var(--violet); }
+.included-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14.5px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.included-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+/* ─── ROADMAP ─────────────────────────────────────────────────── */
+.roadmap-section { padding: 80px 5%; }
+.roadmap-track {
+  max-width: 900px; margin: 56px auto 0;
+  display: flex; align-items: flex-start; gap: 0;
+  position: relative;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.roadmap-track::before {
+  content: '';
+  position: absolute; top: 28px; left: 10%; right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--teal), var(--violet));
+  z-index: 0;
+}
+.roadmap-step {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 0; position: relative; z-index: 1;
+  min-width: 0;
+}
+.step-dot {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; font-weight: 800; margin-bottom: 14px;
+  border: 3px solid var(--white);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+.step-dot.teal { background: var(--teal); color: #fff; }
+.step-dot.violet { background: var(--violet); color: #fff; }
+.step-dot.amber { background: var(--amber); color: #fff; }
+.step-dot.coral { background: var(--coral); color: #fff; }
+.step-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12.5px; font-weight: 700; color: var(--ink);
+  letter-spacing: -0.2px; line-height: 1.3;
+}
+.step-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+/* ─── CAREER TRACKS ──────────────────────────────────────────── */
+.career-section { padding: 80px 5%; background: var(--surface); }
+.career-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px; max-width: 1100px; margin: 48px auto 0;
+}
+.career-card {
+  background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r-lg);
+  padding: 28px 24px; transition: all 0.25s;
+}
+.career-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--border); }
+.career-icon { font-size: 26px; margin-bottom: 14px; }
+.career-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+.career-items { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.career-items li { display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--slate); }
+.career-items li i { color: var(--teal); font-size: 11px; }
+
+/* ─── COMPARE ─────────────────────────────────────────────────── */
+.compare-section { padding: 80px 5%; }
+.compare-wrapper {
+  max-width: 900px; margin: 48px auto 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+}
+@media (max-width: 640px) { .compare-wrapper { grid-template-columns: 1fr; } }
+.compare-col {
+  border-radius: var(--r-lg); padding: 32px 28px; border: 1.5px solid var(--border);
+}
+.compare-col.ysify {
+  background: linear-gradient(135deg, #0d1f1b 0%, #1a1040 100%);
+  border-color: transparent;
+}
+.compare-col-head {
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800;
+  margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+}
+.compare-col.ysify .compare-col-head { color: #fff; }
+.compare-col-head .head-badge {
+  padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 700;
+}
+.compare-col.ysify .head-badge { background: var(--teal-glow); color: var(--teal); }
+.compare-col.traditional .head-badge { background: rgba(255,107,74,0.12); color: var(--coral); }
+.compare-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.compare-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.5; }
+.compare-col.ysify .compare-list li { color: rgba(255,255,255,0.85); }
+.compare-col.traditional .compare-list li { color: var(--slate); }
+.compare-list li i.yes { color: var(--teal); }
+.compare-list li i.no { color: var(--coral); }
+
+/* ─── CTA BANNER ──────────────────────────────────────────────── */
+.cta-section {
+  padding: 90px 5%;
+  background: linear-gradient(135deg, #0d1f1b 0%, #1a1040 100%);
+  position: relative; overflow: hidden; text-align: center;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% -20%, rgba(0,201,167,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-section h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 900;
+  color: #fff; letter-spacing: -1px; line-height: 1.2;
+  margin-bottom: 16px; position: relative;
+}
+.cta-section h2 span { background: var(--grad-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.cta-section p { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 520px; margin: 0 auto 36px; position: relative; }
+.cta-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; position: relative; }
+
+footer {
+  background: #080d17; padding: 48px 5% 32px;
+  color: rgba(255,255,255,0.5);
+}
+.footer-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+}
+.footer-brand { margin-bottom: 16px; }
+.footer-brand-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.footer-logo {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: var(--grad-primary); display: flex; align-items: center; justify-content: center;
+  color: white; font-family: 'Plus Jakarta Sans',sans-serif; font-weight: 900; font-size: 13px;
+}
+.footer-name { font-family: 'Plus Jakarta Sans',sans-serif; font-weight: 800; font-size: 16px; color: white; }
+.footer-about { font-size: 13px; line-height: 1.7; max-width: 240px; }
+.footer-social { display: flex; gap: 10px; margin-top: 20px; }
+.social-btn {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.55); font-size: 14px;
+  text-decoration: none; transition: all 0.2s;
+}
+.social-btn:hover { background: var(--teal); color: white; border-color: var(--teal); }
+
+.footer-col h5 {
+  font-family: 'Plus Jakarta Sans',sans-serif;
+  font-size: 13px; font-weight: 800; color: white;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  margin-bottom: 18px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--teal); }
+.footer-bottom {
+  max-width: 1280px; margin: 40px auto 0;
+  padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  font-size: 13px;
+}
+.footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+.footer-bottom a:hover { color: var(--teal); }
+
+/* ─── MOBILE ──────────────────────────────────────────────────── */
+.hamburger { display: none; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--ink); }
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: block; }
+  .courses-hero { padding: 60px 5% 50px; }
+  .roadmap-track { flex-direction: column; align-items: center; gap: 0; }
+  .roadmap-track::before { display: none; }
+  .roadmap-step { flex-direction: row; align-items: flex-start; gap: 16px; text-align: left; margin-bottom: 24px; width: 100%; max-width: 360px; }
+  .step-dot { margin-bottom: 0; flex-shrink: 0; }
+  .course-card.flagship { flex-direction: column; }
+  .course-card.flagship .card-header { width: 100%; }
+  .flagship-skills-grid { grid-template-columns: 1fr; }
+}
+
+
+.btn-nav-enroll {
+  background: var(--grad-primary);
+  color: white; font-size: 14px; font-weight: 700;
+  padding: 9px 20px; border-radius: 9px;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+  box-shadow: var(--shadow-teal); transition: all 0.25s;
+  white-space: nowrap;
+}
+.btn-nav-enroll:hover { transform: translateY(-1px); box-shadow: 0 12px 36px rgba(0,201,167,0.35); }
+.nav-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+}
+
+.nav-logo{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+}
+
+.brand-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.1;
+}
+
+.brand-text h3{
+    margin:0;
+    font-size:26px;
+    font-weight:800;
+    color:#0f172a;
+}
+
+.brand-text span{
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#64748b;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ══════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <img src="images/ysify-logo.png" alt="YSIFY Logo" class="nav-logo">
+
+    <div class="brand-text">
+        <h3>YSIFY</h3>
+        <span>Skills & Innovation Academy</span>
+    </div>
+</a>
+  <ul class="nav-links">
+    <li><a href="why-ysify.html" >Why YSIFY</a></li>
+    <li><a href="ysify_courses.html" class="active">Courses</a></li>
+    <li><a href="ysify_internship.html">Internship</a></li>
+    <li><a href="ysify_placement.html">Placements</a></li>
+    <li><a href="ysify_techstack.html">Tech Stack</a></li>
+    <li><a href="ysify_about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="btn-nav-enroll">
+    <i class="fas fa-bolt"></i> Enroll Now
+  </a>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="why-ysify.html"          onclick="closeMobile()">🎯 Why YSIFY</a>
+  <a href="ysify_courses.html"      onclick="closeMobile()">📚 Courses</a>
+  <a href="ysify_internship.html"   onclick="closeMobile()">💼 Internship</a>
+  <a href="ysify_placement.html"    onclick="closeMobile()">🚀 Placements</a>
+  <a href="ysify_techstack.html" onclick="closeMobile()">🛠️ Tech Stack</a>
+  <a href="ysify_about.html"        onclick="closeMobile()">ℹ️ About</a>
+  <a href="contact.html"      onclick="closeMobile()">📞 Contact</a>
+  <a href="contact.html"      onclick="closeMobile()" class="m-enroll">⚡ Enroll Now — Free Consultation</a>
+</div>
+<!-- ─── HERO ───────────────────────────────────────────────── -->
+<section class="courses-hero">
+  <div class="hero-eyebrow"><i class="fas fa-graduation-cap"></i> Programs & Courses — Surat, Gujarat</div>
+  <h1>Build <span>Future-Ready Skills</span><br>With Practical Learning</h1>
+  <p>From AI & Automation to Software Development, master industry-relevant skills through hands-on training, real projects, and dedicated career support.</p>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num"><span>10</span></div>
+      <div class="hero-stat-label">Expert Programs</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num"><span>1–7</span></div>
+      <div class="hero-stat-label">Month Durations</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num"><span>12+</span></div>
+      <div class="hero-stat-label">Career Benefits Included</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num"><span>100%</span></div>
+      <div class="hero-stat-label">Practical Curriculum</div>
+    </div>
+  </div>
+
+  <div class="hero-actions">
+    <a href="ysify_courses.html" class="btn-hero-primary"><i class="fas fa-compass"></i> Explore Programs</a>
+    <a href="contact.html" class="btn-hero-ghost"><i class="fas fa-phone-alt"></i> Book Free Consultation</a>
+  </div>
+</section>
+
+<!-- ─── FILTER TABS ─────────────────────────────────────────── -->
+<div class="filter-section">
+  <div class="filter-inner">
+    <button class="filter-btn active" onclick="filterCards('all', this)">All Programs</button>
+    <button class="filter-btn" onclick="filterCards('ai', this)"><i class="fas fa-robot" style="margin-right:6px;font-size:11px"></i>AI & Automation</button>
+    <button class="filter-btn" onclick="filterCards('dev', this)"><i class="fas fa-code" style="margin-right:6px;font-size:11px"></i>Software Development</button>
+  </div>
+</div>
+
+<!-- ─── PROGRAMS SECTION ───────────────────────────────────── -->
+<section class="section" id="programs">
+  <div class="section-inner">
+
+    <!-- AI Category -->
+    <div class="category-header sr" data-cat="ai">
+      <div class="cat-icon-wrap ai"><i class="fas fa-robot"></i></div>
+      <div>
+        <div class="cat-title">Artificial Intelligence & Automation</div>
+        <div class="cat-subtitle">Master the technologies shaping the future of work</div>
+      </div>
+      <div class="cat-badge ai">5 Programs</div>
+    </div>
+
+    <div class="courses-grid" id="ai-grid">
+
+      <!-- Card 1 -->
+      <div class="course-card sr" data-track="ai">
+        <div class="card-header ai">
+          <div class="card-header-bg"></div>
+          <div class="card-icon-wrap ai"><i class="fas fa-brain"></i></div>
+          <div class="card-tags">
+            <span class="tag ai">AI & Prompt</span>
+            <span class="tag duration"><i class="fas fa-clock" style="margin-right:4px"></i>1 Month</span>
+            <span class="tag level">Beginner</span>
+          </div>
+          <div class="card-title">AI Foundation & Prompt Engineering</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Your gateway to artificial intelligence — understand how AI works and learn to communicate with it like a pro using prompt engineering techniques.</p>
+          <ul class="card-skills">
+            <li><i class="fas fa-check-circle ai-icon"></i> AI fundamentals & concepts</li>
+            <li><i class="fas fa-check-circle ai-icon"></i> Prompt design & optimization</li>
+            <li><i class="fas fa-check-circle ai-icon"></i> ChatGPT, Claude & Gemini mastery</li>
+            <li><i class="fas fa-check-circle ai-icon"></i> Practical AI tool workflows</li>
+          </ul>
+          <div class="card-footer">
+            <span class="card-duration-badge"><i class="fas fa-calendar-alt"></i> 1 Month</span>
+            <a href="contact.html" class="card-cta ai">Enquire <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="course-card sr" data-track="ai">
+        <div class="card-header ai">
+          <div class="card-header-bg"></div>
+          <div class="card-icon-wrap ai"><i class="fas fa-cogs"></i></div>
+          <div class="card-tags">
+            <span class="tag ai">Automation</span>
+            <span class="tag duration"><i class="fas fa-clock" style="margin-right:4px"></i>2 Months</span>
+            <span class="tag level">Intermediate</span>
+          </div>
+          <div class="card-title">AI Automation Mastery</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Build powerful automation pipelines using AI tools. Eliminate repetitive work and create intelligent workflows that run without you.</p>
+          <ul class="card-skills">
+            <li><i class="fas fa-check-circle ai-icon"></i> No-code / low-code automation</li>
+            <li><i class="fas fa-check-circle ai-icon"></i> Make.com, Zapier & n8n</li>
+            <li><i class="fas fa-check-circle ai-icon"></i> AI-powered business workflows</li>
+            <li><i class="fas fa-check-circle ai-icon"></i> Real-world automation projects</li>
+          </ul>
+          <div class="card-footer">
+            <span class="card-duration-badge"><i class="fas fa-calendar-alt"></i> 2 Months</span>
+            <a href="contact.html" class="card-cta ai">Enquire <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="course-card sr" data-track="ai">
+        <div class="card-header ai">
+          <div class="card-header-bg"></div>
+          <div class="card-icon-wrap ai"><i class="fas fa-microchip"></i></div>
+          <div class="card-tags">
+            <span class="tag ai">Agent Dev</span>
+            <span class="tag duration"><i class="fas fa-clock" style="margin-right:4px"></i>3 Months</span>
+            <span class="tag level">Intermediate</span>
+          </div>
+          <div class="card-title">AI Agent Development</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Design, build and deploy intelligent AI agents that can reason, plan and take actions autonomously to solve complex problems.</p>
+          <ul class="card-skills">
+            <li><i class="fas fa-check-circle ai-icon"></i> Agent architecture & design</li>
+            <li><i class="fas fa-check-circle ai-icon"></i> Tool use & function calling</li>
+            <li><i class="fas fa-check-circle ai-icon"></i> Memory & context management</li>
+            <li><i class="fas fa-check-circle ai-icon"></i> Deploying production agents</li>
+          </ul>
+          <div class="card-footer">
+            <span class="card-duration-badge"><i class="fas fa-calendar-alt"></i> 3 Months</span>
+            <a href="contact.html" class="card-cta ai">Enquire <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="course-card sr" data-track="ai">
+        <div class="card-header ai">
+          <div class="card-header-bg"></div>
+          <div class="card-icon-wrap ai"><i class="fas fa-network-wired"></i></div>
+          <div class="card-tags">
+            <span class="tag ai">LLM Dev</span>
+            <span class="tag duration"><i class="fas fa-clock" style="margin-right:4px"></i>4 Months</span>
+            <span class="tag level">Advanced</span>
+          </div>
+          <div class="card-title">AI Engineering & LLM Development</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Go deep into Large Language Models — fine-tune, build RAG pipelines, and engineer production-grade AI applications from scratch.</p>
+          <ul class="card-skills">
+            <li><i class="fas fa-check-circle ai-icon"></i> LLM architecture & fine-tuning</li>
+            <li><i class="fas fa-check-circle ai-icon"></i> RAG pipeline development</li>
+            <li><i class="fas fa-check-circle ai-icon"></i> Vector databases & embeddings</li>
+            <li><i class="fas fa-check-circle ai-icon"></i> API integration & deployment</li>
+          </ul>
+          <div class="card-footer">
+            <span class="card-duration-badge"><i class="fas fa-calendar-alt"></i> 4 Months</span>
+            <a href="contact.html" class="card-cta ai">Enquire <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FLAGSHIP Card 5 -->
+      <div class="course-card flagship sr" data-track="ai">
+        <div class="card-header ai" style="position:relative;">
+          <div class="card-header-bg"></div>
+          <div class="flagship-badge">⭐ Flagship</div>
+          <div class="card-icon-wrap ai"><i class="fas fa-sitemap"></i></div>
+          <div class="card-tags">
+            <span class="tag ai">Multi-Agent</span>
+            <span class="tag duration"><i class="fas fa-clock" style="margin-right:4px"></i>7 Months</span>
+            <span class="tag level">Expert</span>
+          </div>
+          <div class="card-title">Multi AI Agent & Agentic AI Master</div>
+        </div>
+        <div class="flagship-card-body">
+          <p class="card-desc" style="margin-bottom:0">Our most comprehensive program — master the entire agentic AI landscape, from orchestrating multi-agent systems to building enterprise-level intelligent platforms. The ultimate career accelerator.</p>
+          <ul class="flagship-skills-grid">
+            <li><i class="fas fa-check-circle"></i> Multi-agent orchestration</li>
+            <li><i class="fas fa-check-circle"></i> CrewAI, AutoGen & LangGraph</li>
+            <li><i class="fas fa-check-circle"></i> Enterprise AI architecture</li>
+            <li><i class="fas fa-check-circle"></i> Agentic workflow design</li>
+            <li><i class="fas fa-check-circle"></i> Real-time AI system deployment</li>
+            <li><i class="fas fa-check-circle"></i> AI product development</li>
+          </ul>
+          <div class="flagship-footer">
+            <a href="contact.html" class="flagship-cta"><i class="fas fa-phone-alt"></i> Book Free Consultation</a>
+            <span style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;"><i class="fas fa-calendar-alt" style="color:var(--amber)"></i> 7-Month Comprehensive Program</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /ai-grid -->
+
+    <!-- Dev Category -->
+    <div class="category-header sr" data-cat="dev">
+      <div class="cat-icon-wrap dev"><i class="fas fa-code"></i></div>
+      <div>
+        <div class="cat-title">Software Development</div>
+        <div class="cat-subtitle">Build real applications and launch your tech career</div>
+      </div>
+      <div class="cat-badge dev">5 Programs</div>
+    </div>
+
+    <div class="courses-grid" id="dev-grid">
+
+      <!-- Card 6 -->
+      <div class="course-card sr" data-track="dev">
+        <div class="card-header dev">
+          <div class="card-header-bg"></div>
+          <div class="card-icon-wrap dev"><i class="fas fa-globe"></i></div>
+          <div class="card-tags">
+            <span class="tag dev">Full-Stack</span>
+            <span class="tag duration"><i class="fas fa-clock" style="margin-right:4px"></i>5 Months</span>
+            <span class="tag level">Intermediate</span>
+          </div>
+          <div class="card-title">Web Development with AI</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Build modern, responsive websites and web apps using cutting-edge frontend and backend technologies, enhanced with AI-powered features.</p>
+          <ul class="card-skills">
+            <li><i class="fas fa-check-circle dev-icon"></i> HTML, CSS & JavaScript mastery</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> React / modern frameworks</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> Backend APIs & databases</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> AI integration into web apps</li>
+          </ul>
+          <div class="card-footer">
+            <span class="card-duration-badge"><i class="fas fa-calendar-alt"></i> 5 Months</span>
+            <a href="contact.html" class="card-cta dev">Enquire <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="course-card sr" data-track="dev">
+        <div class="card-header dev">
+          <div class="card-header-bg"></div>
+          <div class="card-icon-wrap dev"><i class="fab fa-python"></i></div>
+          <div class="card-tags">
+            <span class="tag dev">Python</span>
+            <span class="tag duration"><i class="fas fa-clock" style="margin-right:4px"></i>3 Months</span>
+            <span class="tag level">Beginner–Pro</span>
+          </div>
+          <div class="card-title">Python Programming</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Master Python from the ground up — the language powering AI, automation, data science, and backend development worldwide.</p>
+          <ul class="card-skills">
+            <li><i class="fas fa-check-circle dev-icon"></i> Python core & OOP concepts</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> Libraries: NumPy, Pandas, Flask</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> Data manipulation & scripting</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> Real project portfolio</li>
+          </ul>
+          <div class="card-footer">
+            <span class="card-duration-badge"><i class="fas fa-calendar-alt"></i> 3 Months</span>
+            <a href="contact.html" class="card-cta dev">Enquire <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="course-card sr" data-track="dev">
+        <div class="card-header dev">
+          <div class="card-header-bg"></div>
+          <div class="card-icon-wrap dev"><i class="fab fa-microsoft"></i></div>
+          <div class="card-tags">
+            <span class="tag dev">.NET Core</span>
+            <span class="tag duration"><i class="fas fa-clock" style="margin-right:4px"></i>3 Months</span>
+            <span class="tag level">Intermediate</span>
+          </div>
+          <div class="card-title">.NET Core Development</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Build enterprise-grade backend systems and APIs using Microsoft's powerful .NET Core framework — in-demand in global job markets.</p>
+          <ul class="card-skills">
+            <li><i class="fas fa-check-circle dev-icon"></i> C# programming fundamentals</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> ASP.NET Core & Web APIs</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> Database integration (EF Core)</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> Deployment & cloud basics</li>
+          </ul>
+          <div class="card-footer">
+            <span class="card-duration-badge"><i class="fas fa-calendar-alt"></i> 3 Months</span>
+            <a href="contact.html" class="card-cta dev">Enquire <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="course-card sr" data-track="dev">
+        <div class="card-header dev">
+          <div class="card-header-bg"></div>
+          <div class="card-icon-wrap dev"><i class="fas fa-paint-brush"></i></div>
+          <div class="card-tags">
+            <span class="tag dev">Frontend</span>
+            <span class="tag duration"><i class="fas fa-clock" style="margin-right:4px"></i>3–4 Months</span>
+            <span class="tag level">Beginner</span>
+          </div>
+          <div class="card-title">Web Design Frontend</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Become a skilled frontend developer — create stunning, pixel-perfect interfaces that users love, with modern tools and design thinking.</p>
+          <ul class="card-skills">
+            <li><i class="fas fa-check-circle dev-icon"></i> HTML5 & advanced CSS3</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> Responsive & mobile-first design</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> JavaScript interactions & DOM</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> Figma to code workflow</li>
+          </ul>
+          <div class="card-footer">
+            <span class="card-duration-badge"><i class="fas fa-calendar-alt"></i> 3–4 Months</span>
+            <a href="contact.html" class="card-cta dev">Enquire <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="course-card sr" data-track="dev">
+        <div class="card-header dev">
+          <div class="card-header-bg"></div>
+          <div class="card-icon-wrap dev"><i class="fas fa-terminal"></i></div>
+          <div class="card-tags">
+            <span class="tag dev">C / C++</span>
+            <span class="tag duration"><i class="fas fa-clock" style="margin-right:4px"></i>2 Months</span>
+            <span class="tag level">Beginner</span>
+          </div>
+          <div class="card-title">C and C++ Programming</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Build the strongest programming foundation with C and C++ — essential for competitive programming, embedded systems, and performance-critical software.</p>
+          <ul class="card-skills">
+            <li><i class="fas fa-check-circle dev-icon"></i> C language fundamentals</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> C++ OOP & STL</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> Memory management & pointers</li>
+            <li><i class="fas fa-check-circle dev-icon"></i> Data structures & algorithms</li>
+          </ul>
+          <div class="card-footer">
+            <span class="card-duration-badge"><i class="fas fa-calendar-alt"></i> 2 Months</span>
+            <a href="contact.html" class="card-cta dev">Enquire <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /dev-grid -->
+  </div>
+</section>
+
+
+
+<!-- ─── LEARNING ROADMAP ─────────────────────────────────────── -->
+<section class="roadmap-section">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-label sr" style="justify-content:center">Your Learning Path</div>
+    <h2 class="section-title sr" style="text-align:center;margin-left:auto;margin-right:auto">From Day One to<br>Dream Career</h2>
+    <p class="section-sub sr" style="margin:10px auto 0;text-align:center;max-width:500px">A structured journey — every step builds on the last, bringing you closer to your career goals.</p>
+
+    <div class="roadmap-track">
+      <div class="roadmap-step sr">
+        <div class="step-dot teal"><i class="fas fa-book-open" style="font-size:16px"></i></div>
+        <div><div class="step-label">Learn</div><div class="step-sub">Live sessions</div></div>
+      </div>
+      <div class="roadmap-step sr">
+        <div class="step-dot violet"><i class="fas fa-code" style="font-size:16px"></i></div>
+        <div><div class="step-label">Practice</div><div class="step-sub">Daily tasks</div></div>
+      </div>
+      <div class="roadmap-step sr">
+        <div class="step-dot amber"><i class="fas fa-hammer" style="font-size:16px"></i></div>
+        <div><div class="step-label">Build Projects</div><div class="step-sub">Real deliverables</div></div>
+      </div>
+      <div class="roadmap-step sr">
+        <div class="step-dot coral"><i class="fas fa-briefcase" style="font-size:16px"></i></div>
+        <div><div class="step-label">Internship</div><div class="step-sub">Live experience</div></div>
+      </div>
+      <div class="roadmap-step sr">
+        <div class="step-dot teal"><i class="fas fa-certificate" style="font-size:16px"></i></div>
+        <div><div class="step-label">Certification</div><div class="step-sub">YSIFY certified</div></div>
+      </div>
+      <div class="roadmap-step sr">
+        <div class="step-dot violet"><i class="fas fa-rocket" style="font-size:16px"></i></div>
+        <div><div class="step-label">Career Prep</div><div class="step-sub">Resume + mock</div></div>
+      </div>
+      <div class="roadmap-step sr">
+        <div class="step-dot amber"><i class="fas fa-star" style="font-size:16px"></i></div>
+        <div><div class="step-label">Opportunities</div><div class="step-sub">Jobs & freelance</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CAREER SUPPORT ─────────────────────────────────────────── -->
+<section class="career-section">
+  <div style="max-width:1100px;margin:0 auto;text-align:center">
+    <div class="section-label sr" style="justify-content:center">Career Support Program</div>
+    <h2 class="section-title sr" style="text-align:center;margin-left:auto;margin-right:auto;max-width:600px">Beyond Learning —<br>We Prepare You for the World</h2>
+    <p class="section-sub sr" style="margin:10px auto;text-align:center">We don't just teach; we guide you to your first job, freelance client, or remote opportunity.</p>
+  </div>
+  <div class="career-grid">
+    <div class="career-card sr">
+      <div class="career-icon">🎯</div>
+      <div class="career-title">Profile Building</div>
+      <ul class="career-items">
+        <li><i class="fas fa-check-circle"></i> ATS Resume Creation</li>
+        <li><i class="fas fa-check-circle"></i> LinkedIn Profile Optimization</li>
+        <li><i class="fas fa-check-circle"></i> GitHub Portfolio Setup</li>
+        <li><i class="fas fa-check-circle"></i> Professional Bio Writing</li>
+      </ul>
+    </div>
+    <div class="career-card sr">
+      <div class="career-icon">💼</div>
+      <div class="career-title">Freelancing Launchpad</div>
+      <ul class="career-items">
+        <li><i class="fas fa-check-circle"></i> Upwork Profile Setup & Strategy</li>
+        <li><i class="fas fa-check-circle"></i> Fiverr Gig Creation</li>
+        <li><i class="fas fa-check-circle"></i> Proposal Writing Techniques</li>
+        <li><i class="fas fa-check-circle"></i> First Client Guidance</li>
+      </ul>
+    </div>
+    <div class="career-card sr">
+      <div class="career-icon">🌍</div>
+      <div class="career-title">Global Career Access</div>
+      <ul class="career-items">
+        <li><i class="fas fa-check-circle"></i> Remote Work Platform Strategy</li>
+        <li><i class="fas fa-check-circle"></i> International Job Search</li>
+        <li><i class="fas fa-check-circle"></i> Professional Networking</li>
+        <li><i class="fas fa-check-circle"></i> AI-Powered Career Tools</li>
+      </ul>
+    </div>
+    <div class="career-card sr">
+      <div class="career-icon">🎤</div>
+      <div class="career-title">Interview Readiness</div>
+      <ul class="career-items">
+        <li><i class="fas fa-check-circle"></i> Mock Interview Sessions</li>
+        <li><i class="fas fa-check-circle"></i> Technical Rounds Prep</li>
+        <li><i class="fas fa-check-circle"></i> Communication Coaching</li>
+        <li><i class="fas fa-check-circle"></i> Confidence Building</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMPARE ────────────────────────────────────────────────── -->
+<section class="compare-section">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-label sr" style="justify-content:center">Why YSIFY Is Different</div>
+    <h2 class="section-title sr" style="text-align:center;margin-left:auto;margin-right:auto">Traditional Training vs<br>YSIFY Training</h2>
+  </div>
+  <div class="compare-wrapper sr">
+    <div class="compare-col traditional">
+      <div class="compare-col-head">
+        Traditional Training
+        <span class="head-badge">Old Model</span>
+      </div>
+      <ul class="compare-list">
+        <li><i class="fas fa-times-circle no"></i> Theory-heavy, few real projects</li>
+        <li><i class="fas fa-times-circle no"></i> No career roadmap after course</li>
+        <li><i class="fas fa-times-circle no"></i> No resume or profile support</li>
+        <li><i class="fas fa-times-circle no"></i> No internship exposure</li>
+        <li><i class="fas fa-times-circle no"></i> Outdated industry curriculum</li>
+        <li><i class="fas fa-times-circle no"></i> No freelancing guidance</li>
+        <li><i class="fas fa-times-circle no"></i> Generic certifications</li>
+      </ul>
+    </div>
+    <div class="compare-col ysify">
+      <div class="compare-col-head">
+        YSIFY Training
+        <span class="head-badge">New Standard</span>
+      </div>
+      <ul class="compare-list">
+        <li><i class="fas fa-check-circle yes"></i> 100% practical, project-based</li>
+        <li><i class="fas fa-check-circle yes"></i> Complete career roadmap included</li>
+        <li><i class="fas fa-check-circle yes"></i> Resume, LinkedIn & GitHub built</li>
+        <li><i class="fas fa-check-circle yes"></i> Internship integrated in program</li>
+        <li><i class="fas fa-check-circle yes"></i> AI & industry-current curriculum</li>
+        <li><i class="fas fa-check-circle yes"></i> Upwork & Fiverr profile setup</li>
+        <li><i class="fas fa-check-circle yes"></i> YSIFY certification + portfolio</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <div class="footer-brand-row">
+        
+          <span class="footer-name">YSIFY Academy</span>
+        </div>
+        <div class="footer-about">Surat's premier skills academy for AI, software development &amp; career growth. Empowering minds. Building futures.</div>
+      </div>
+      <div class="footer-social">
+        <a href="https://wa.me/919904230962" class="social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/ysify_academy/" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/ysify-skills-innovation-academy/?" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.youtube.com/@ysifyacademy" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Programs</h5>
+      <ul>
+        <li><a href="ysify_courses.html">AI Foundation</a></li>
+        <li><a href="ysify_courses.html">AI Automation</a></li>
+        <li><a href="ysify_courses.html">AI Agent Dev</a></li>
+        <li><a href="ysify_courses.html">Web Development</a></li>
+        <li><a href="ysify_courses.html">Python Dev</a></li>
+        <li><a href="ysify_courses.html">.NET Core</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Academy</h5>
+      <ul>
+        <li><a href="why-ysify.html">Why YSIFY</a></li>
+        <li><a href="ysify_internship.html">Internship</a></li>
+        <li><a href="ysify_placement.html">Placements</a></li>
+        <li><a href="ysify_about.html">About Us</a></li>
+        <li><a href="ysify_techstack.html">Tech Stack</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+919904230962">+91 99042 30962</a></li>
+        <li><a href="mailto:info@ysify.in">info@ysify.in</a></li>
+        <li><a href="contact.html">C1-206, Pragati IT Park,<br>Mota Varachha, Surat</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ysify Skills &amp; Innovation Academy. All rights reserved.</span>
+    <div style="display:flex;gap:20px">
+      <a href="https://ysify.in/privacy-policy" target="_blank">Privacy Policy</a>
+      <a href="https://ysify.in/terms-of-use" target="_blank">Terms of Use</a>
+      <a href="contact.html">Enroll Now</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function sendWhatsApp() {
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let email = document.getElementById("email").value;
+    let course = document.getElementById("course").value;
+    let message = document.getElementById("message").value;
+
+    if(name === "" || phone === "" || email === "" || course === "") {
+        alert("Please fill all required fields.");
+        return;
+    }
+
+    let whatsappMessage =
+`🎓 New Course Inquiry
+
+👤 Name: ${name}
+
+📞 Phone: ${phone}
+
+📧 Email: ${email}
+
+📚 Course: ${course}
+
+💬 Message:
+${message}`;
+
+    let whatsappURL =
+`https://wa.me/919904230962?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappURL, "_blank");
+}
+// Navbar scroll
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.sr').forEach(el => observer.observe(el));
+
+// Filter tabs
+function filterCards(track, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.course-card').forEach(card => {
+    if (track === 'all') {
+      card.style.display = '';
+    } else {
+      card.style.display = card.dataset.track === track ? '' : 'none';
+    }
+  });
+
+  document.querySelectorAll('.category-header').forEach(h => {
+    if (track === 'all') {
+      h.style.display = '';
+    } else {
+      h.style.display = h.dataset.cat === track ? '' : 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

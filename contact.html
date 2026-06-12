@@ -1,0 +1,1712 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us — YSIFY Skills & Innovation Academy</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      /* ─── DESIGN TOKENS ──────────────────────────────────────────── */
+      :root {
+        --ink: #0b0f1a;
+        --ink-2: #1c2235;
+        --slate: #4a5568;
+        --muted: #8492a6;
+        --border: #e4e9f0;
+        --surface: #f7f9fc;
+        --white: #ffffff;
+
+        --teal: #00c9a7;
+        --teal-d: #00a98a;
+        --teal-glow: rgba(0, 201, 167, 0.18);
+        --violet: #5b4fe9;
+        --violet-d: #4338ca;
+        --violet-glow: rgba(91, 79, 233, 0.18);
+        --amber: #f59e0b;
+        --amber-glow: rgba(245, 158, 11, 0.15);
+        --coral: #ff6b4a;
+
+        --grad-primary: linear-gradient(135deg, var(--teal), var(--violet));
+        --grad-hero: linear-gradient(135deg, #05f0c0 0%, #5b4fe9 100%);
+
+        --shadow-xs: 0 1px 4px rgba(11, 15, 26, 0.06);
+        --shadow-sm: 0 2px 12px rgba(11, 15, 26, 0.08);
+        --shadow-md: 0 8px 32px rgba(11, 15, 26, 0.1);
+        --shadow-lg: 0 20px 60px rgba(11, 15, 26, 0.13);
+        --shadow-teal: 0 8px 32px rgba(0, 201, 167, 0.28);
+        --shadow-violet: 0 8px 32px rgba(91, 79, 233, 0.28);
+
+        --r: 14px;
+        --r-lg: 22px;
+        --r-xl: 32px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--ink);
+        background: var(--white);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      /* ─── SCROLL REVEAL ──────────────────────────────────────────── */
+      .sr {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s ease;
+      }
+      .sr.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ─── NAVBAR ─────────────────────────────────────────────────── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5%;
+        transition: box-shadow 0.3s;
+      }
+      nav.scrolled {
+        box-shadow: var(--shadow-md);
+      }
+
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+      .nav-logo-mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 11px;
+        background: var(--grad-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 900;
+        font-size: 15px;
+        letter-spacing: -0.5px;
+        box-shadow: var(--shadow-teal);
+        position: relative;
+        overflow: hidden;
+      }
+      .nav-logo-mark::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.18) 0%,
+          transparent 60%
+        );
+      }
+      .nav-wordmark {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 800;
+        font-size: 18px;
+        color: var(--ink);
+        letter-spacing: -0.4px;
+      }
+      .nav-wordmark span {
+        background: var(--grad-hero);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        list-style: none;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--slate);
+        font-size: 14px;
+        font-weight: 500;
+        padding: 7px 13px;
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--teal);
+        background: var(--teal-glow);
+      }
+      .nav-links a.active {
+        color: var(--teal);
+        font-weight: 600;
+      }
+
+      .btn-nav-enroll {
+        background: var(--grad-primary);
+        color: white;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 9px 20px;
+        border-radius: 9px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: var(--shadow-teal);
+        transition: all 0.25s;
+        white-space: nowrap;
+      }
+      .btn-nav-enroll:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 36px rgba(0, 201, 167, 0.35);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 6px;
+        border: none;
+        background: none;
+      }
+      .hamburger span {
+        width: 22px;
+        height: 2px;
+        background: var(--ink);
+        border-radius: 2px;
+        display: block;
+        transition: all 0.3s;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        padding: 16px 5%;
+        z-index: 999;
+        flex-direction: column;
+        gap: 4px;
+        box-shadow: var(--shadow-lg);
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu a {
+        text-decoration: none;
+        color: var(--slate);
+        font-size: 15px;
+        font-weight: 500;
+        padding: 12px 16px;
+        border-radius: 10px;
+        transition: all 0.2s;
+      }
+      .mobile-menu a:hover {
+        background: var(--surface);
+        color: var(--teal);
+      }
+      .mobile-menu .m-enroll {
+        background: var(--grad-primary);
+        color: white !important;
+        text-align: center;
+        font-weight: 700;
+        margin-top: 8px;
+        border-radius: 10px;
+      }
+
+      /* ─── SECTION UTILS ──────────────────────────────────────────── */
+      section {
+        padding: 90px 5%;
+      }
+      .s-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 14px;
+      }
+      .eyebrow-dot {
+        width: 6px;
+        height: 6px;
+        background: var(--teal);
+        border-radius: 50%;
+      }
+
+      .s-title {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: clamp(28px, 3.8vw, 46px);
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -1.2px;
+        color: var(--ink);
+        margin-bottom: 16px;
+      }
+      .s-title .g {
+        background: var(--grad-hero);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .s-sub {
+        font-size: 17px;
+        color: var(--muted);
+        line-height: 1.75;
+        max-width: 560px;
+      }
+
+      /* ─── HERO ───────────────────────────────────────────────────── */
+      #page-hero {
+        min-height: 54vh;
+        padding-top: 70px;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+          140deg,
+          #f0fdfb 0%,
+          #f5f3ff 50%,
+          #fff8f0 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+      #page-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1.2' fill='%2300c9a7' fill-opacity='0.07'/%3E%3C/svg%3E");
+      }
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        filter: blur(80px);
+        opacity: 0.55;
+      }
+      .orb-1 {
+        width: 520px;
+        height: 520px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 201, 167, 0.22),
+          transparent 70%
+        );
+        top: -160px;
+        right: -100px;
+      }
+      .orb-2 {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(91, 79, 233, 0.16),
+          transparent 70%
+        );
+        bottom: -80px;
+        left: -100px;
+      }
+      .orb-3 {
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(
+          circle,
+          rgba(245, 158, 11, 0.14),
+          transparent 70%
+        );
+        top: 30%;
+        left: 35%;
+      }
+
+      .hero-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        padding: 80px 0 80px;
+        text-align: center;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: white;
+        border: 1.5px solid var(--border);
+        border-radius: 100px;
+        padding: 7px 16px 7px 10px;
+        font-size: 13px;
+        color: var(--slate);
+        font-weight: 600;
+        margin-bottom: 28px;
+        box-shadow: var(--shadow-sm);
+      }
+      .badge-pulse {
+        width: 10px;
+        height: 10px;
+        background: var(--teal);
+        border-radius: 50%;
+        animation: heroPulse 2s infinite;
+      }
+      @keyframes heroPulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(0, 201, 167, 0.5);
+        }
+        70% {
+          box-shadow: 0 0 0 8px rgba(0, 201, 167, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(0, 201, 167, 0);
+        }
+      }
+      .hero-h1 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: clamp(36px, 5.5vw, 66px);
+        font-weight: 900;
+        line-height: 1.06;
+        letter-spacing: -2.5px;
+        color: var(--ink);
+        margin-bottom: 22px;
+      }
+      .hero-h1 .g {
+        background: var(--grad-hero);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-p {
+        font-size: 18px;
+        color: var(--slate);
+        line-height: 1.75;
+        margin: 0 auto 16px;
+        max-width: 620px;
+      }
+      .hero-tagline {
+        font-size: 15px;
+        color: var(--violet);
+        font-weight: 700;
+        margin-bottom: 44px;
+      }
+
+      /* ─── TOP CONTACT CARDS ──────────────────────────────────────── */
+      .contact-cards-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .contact-card-hero {
+        background: white;
+        border-radius: var(--r-lg);
+        padding: 28px 24px;
+        text-align: center;
+        border: 1.5px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .contact-card-hero:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--teal);
+      }
+      .cch-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        margin-bottom: 4px;
+      }
+      .cch-teal {
+        background: rgba(0, 201, 167, 0.1);
+        color: var(--teal);
+      }
+      .cch-violet {
+        background: rgba(91, 79, 233, 0.1);
+        color: var(--violet);
+      }
+      .cch-amber {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--amber);
+      }
+      .cch-label {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--muted);
+      }
+      .cch-value {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 15px;
+        font-weight: 800;
+        color: var(--ink);
+      }
+
+      /* ─── CONTACT INFO + FORM ────────────────────────────────────── */
+      #contact-main {
+        background: var(--surface);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 52px;
+        align-items: start;
+      }
+
+      /* Info panel */
+      .info-panel {
+      }
+      .info-panel .eyebrow {
+        margin-bottom: 10px;
+      }
+      .info-panel .s-title {
+        font-size: clamp(24px, 2.8vw, 36px);
+        margin-bottom: 14px;
+      }
+      .info-panel .s-sub {
+        font-size: 16px;
+        margin-bottom: 36px;
+      }
+
+      .info-items {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin-bottom: 36px;
+      }
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        background: white;
+        border-radius: var(--r);
+        padding: 20px 22px;
+        border: 1px solid var(--border);
+        transition: all 0.25s;
+      }
+      .info-item:hover {
+        border-color: var(--teal);
+        box-shadow: 0 0 0 3px var(--teal-glow);
+      }
+      .info-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+      }
+      .ii-teal {
+        background: rgba(0, 201, 167, 0.1);
+        color: var(--teal);
+      }
+      .ii-violet {
+        background: rgba(91, 79, 233, 0.1);
+        color: var(--violet);
+      }
+      .ii-amber {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--amber);
+      }
+      .info-text-label {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+      .info-text-val {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 15px;
+        font-weight: 800;
+        color: var(--ink);
+        line-height: 1.4;
+        text-decoration: none;
+      }
+      .info-text-val:hover {
+        color: var(--teal);
+      }
+
+      /* Why contact chips */
+      .why-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .why-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: white;
+        border: 1.5px solid var(--border);
+        border-radius: 100px;
+        padding: 7px 14px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--slate);
+        transition: all 0.2s;
+      }
+      .why-chip:hover {
+        border-color: var(--teal);
+        color: var(--teal);
+        background: var(--teal-glow);
+      }
+      .chip-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--teal);
+        flex-shrink: 0;
+      }
+
+      /* Form panel */
+      .form-panel {
+        background: white;
+        border-radius: var(--r-xl);
+        padding: 44px;
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--border);
+      }
+      .form-panel h3 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 22px;
+        font-weight: 900;
+        color: var(--ink);
+        margin-bottom: 6px;
+      }
+      .form-panel .form-sub {
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 30px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        margin-bottom: 18px;
+      }
+      .form-group label {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--ink);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .form-group label .req {
+        color: var(--teal);
+      }
+      .form-control {
+        width: 100%;
+        padding: 13px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: var(--r);
+        font-size: 14px;
+        font-family: "Inter", sans-serif;
+        color: var(--ink);
+        background: var(--surface);
+        transition: all 0.2s;
+        outline: none;
+        appearance: none;
+      }
+      .form-control:focus {
+        border-color: var(--teal);
+        background: white;
+        box-shadow: 0 0 0 3px var(--teal-glow);
+      }
+      .form-control::placeholder {
+        color: var(--muted);
+      }
+      select.form-control {
+        cursor: pointer;
+      }
+      textarea.form-control {
+        resize: vertical;
+        min-height: 110px;
+      }
+
+      .btn-submit {
+        width: 100%;
+        padding: 15px 28px;
+        background: var(--grad-primary);
+        color: white;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        border: none;
+        border-radius: var(--r);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        box-shadow: var(--shadow-teal);
+        transition: all 0.25s;
+        margin-top: 6px;
+      }
+      .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 40px rgba(0, 201, 167, 0.38);
+      }
+      .btn-submit:active {
+        transform: translateY(0);
+      }
+
+      /* Success state */
+      .form-success {
+        display: none;
+        text-align: center;
+        padding: 32px 20px;
+      }
+      .form-success.show {
+        display: block;
+      }
+      .form-success .success-icon {
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        background: rgba(0, 201, 167, 0.1);
+        margin: 0 auto 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        color: var(--teal);
+      }
+      .form-success h4 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 20px;
+        font-weight: 900;
+        color: var(--ink);
+        margin-bottom: 8px;
+      }
+      .form-success p {
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      /* ─── WHY CONTACT ────────────────────────────────────────────── */
+      #why-contact {
+        background: var(--ink-2);
+        padding: 80px 5%;
+      }
+      #why-contact .s-title {
+        color: white;
+      }
+      #why-contact .eyebrow {
+        color: var(--teal);
+      }
+      #why-contact .eyebrow-dot {
+        background: var(--teal);
+      }
+      #why-contact .s-sub {
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .s-header-center {
+        text-align: center;
+        margin-bottom: 52px;
+      }
+      .s-header-center .s-sub {
+        margin: 0 auto;
+      }
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+      }
+      .why-card {
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: var(--r-lg);
+        padding: 30px 22px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        transition: all 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+      }
+      .why-card:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(0, 201, 167, 0.35);
+        transform: translateY(-5px);
+      }
+      .why-card-icon {
+        width: 54px;
+        height: 54px;
+        border-radius: 16px;
+        background: var(--grad-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        color: white;
+        box-shadow: var(--shadow-teal);
+      }
+      .why-card h4 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 800;
+        color: white;
+        line-height: 1.35;
+      }
+      .why-card p {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.6;
+      }
+
+      /* ─── MAP ────────────────────────────────────────────────────── */
+      #map-section {
+        padding: 90px 5%;
+        background: white;
+      }
+      .map-wrapper {
+        border-radius: var(--r-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        border: 1px solid var(--border);
+        position: relative;
+      }
+      .map-wrapper iframe {
+        display: block;
+      }
+      .map-overlay-badge {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: white;
+        border-radius: var(--r);
+        padding: 14px 18px;
+        box-shadow: var(--shadow-md);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid var(--border);
+      }
+      .map-badge-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 11px;
+        background: var(--grad-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 17px;
+        flex-shrink: 0;
+        box-shadow: var(--shadow-teal);
+      }
+      .map-badge-name {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--ink);
+      }
+      .map-badge-addr {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      /* ─── WHATSAPP CTA ───────────────────────────────────────────── */
+      #wa-cta {
+        background: linear-gradient(135deg, #0b0f1a 0%, #1a1040 100%);
+        padding: 80px 5%;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      #wa-cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1.2' fill='%2300c9a7' fill-opacity='0.05'/%3E%3C/svg%3E");
+      }
+      .wa-cta-inner {
+        max-width: 700px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+      .wa-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 201, 167, 0.12);
+        border: 1.5px solid rgba(0, 201, 167, 0.3);
+        border-radius: 100px;
+        padding: 7px 16px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--teal);
+        margin-bottom: 24px;
+      }
+      #wa-cta h2 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: clamp(26px, 3.5vw, 40px);
+        font-weight: 900;
+        color: white;
+        letter-spacing: -1px;
+        margin-bottom: 14px;
+        line-height: 1.1;
+      }
+      #wa-cta p {
+        font-size: 17px;
+        color: rgba(255, 255, 255, 0.55);
+        margin-bottom: 36px;
+        line-height: 1.7;
+      }
+      .wa-btns {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-wa {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #25d366;
+        color: white;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 15px;
+        font-weight: 800;
+        padding: 15px 30px;
+        border-radius: 12px;
+        text-decoration: none;
+        box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+        transition: all 0.25s;
+      }
+      .btn-wa:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 40px rgba(37, 211, 102, 0.5);
+      }
+      .btn-call {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        color: white;
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        padding: 15px 30px;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.25s;
+      }
+      .btn-call:hover {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(255, 255, 255, 0.4);
+        transform: translateY(-3px);
+      }
+      .btn-email {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(91, 79, 233, 0.2);
+        color: #a89ffa;
+        border: 1.5px solid rgba(91, 79, 233, 0.35);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        padding: 15px 30px;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.25s;
+      }
+      .btn-email:hover {
+        background: rgba(91, 79, 233, 0.3);
+        transform: translateY(-3px);
+      }
+
+      /* ─── FLOATING WHATSAPP BUTTON ───────────────────────────────── */
+      .float-wa {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 900;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: #25d366;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 8px 28px rgba(37, 211, 102, 0.55);
+        transition: all 0.3s;
+        animation: waPulse 3s infinite;
+      }
+      .float-wa:hover {
+        transform: scale(1.12);
+        box-shadow: 0 12px 40px rgba(37, 211, 102, 0.7);
+      }
+      @keyframes waPulse {
+        0%,
+        100% {
+          box-shadow: 0 8px 28px rgba(37, 211, 102, 0.55);
+        }
+        50% {
+          box-shadow:
+            0 8px 28px rgba(37, 211, 102, 0.55),
+            0 0 0 12px rgba(37, 211, 102, 0.12);
+        }
+      }
+
+      /* ─── FOOTER ─────────────────────────────────────────────────── */
+      footer {
+        background: #0b0f1a;
+        padding: 64px 5% 0;
+        color: white;
+      }
+      .footer-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 48px;
+        padding-bottom: 52px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .footer-brand-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .footer-logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 11px;
+        background: var(--grad-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 900;
+        font-size: 14px;
+        color: white;
+        box-shadow: var(--shadow-teal);
+      }
+      .footer-name {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        color: white;
+      }
+      .footer-about {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.45);
+        line-height: 1.7;
+        margin-bottom: 20px;
+        max-width: 280px;
+      }
+      .footer-social {
+        display: flex;
+        gap: 8px;
+      }
+      .social-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 9px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        font-size: 14px;
+        transition: all 0.2s;
+      }
+      .social-btn:hover {
+        background: var(--teal);
+        border-color: var(--teal);
+        color: white;
+      }
+      .footer-col h5 {
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 16px;
+      }
+      .footer-col ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .footer-col ul li a {
+        text-decoration: none;
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.55);
+        transition: color 0.2s;
+      }
+      .footer-col ul li a:hover {
+        color: var(--teal);
+      }
+      .footer-bottom {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 20px 0;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .footer-bottom a {
+        color: rgba(255, 255, 255, 0.3);
+        text-decoration: none;
+      }
+      .footer-bottom a:hover {
+        color: var(--teal);
+      }
+
+      /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+      @media (max-width: 1100px) {
+        .why-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .nav-links,
+        .btn-nav-enroll {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-cards-row {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 14px;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .contact-cards-row {
+          grid-template-columns: 1fr;
+          max-width: 340px;
+        }
+        .why-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .form-panel {
+          padding: 28px 20px;
+        }
+        .footer-inner {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        section {
+          padding: 64px 5%;
+        }
+        .wa-btns {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .why-grid {
+          grid-template-columns: 1fr;
+          max-width: 340px;
+          margin: 0 auto;
+        }
+        .hero-h1 {
+          letter-spacing: -1.5px;
+        }
+      }
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .nav-logo {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+      }
+
+      .brand-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+      }
+
+      .brand-text h3 {
+        margin: 0;
+        font-size: 26px;
+        font-weight: 800;
+        color: #0f172a;
+      }
+
+      .brand-text span {
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #64748b;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ═══ NAVBAR ════════════════════════════════════════════════════ -->
+    <nav id="navbar">
+      <a href="#" class="nav-brand">
+        <img src="images/ysify-logo.png" alt="YSIFY Logo" class="nav-logo" />
+
+        <div class="brand-text">
+          <h3>YSIFY</h3>
+          <span>Skills & Innovation Academy</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="why-ysify.html">Why YSIFY</a></li>
+        <li><a href="ysify_courses.html">Courses</a></li>
+        <li><a href="ysify_internship.html">Internship</a></li>
+        <li><a href="ysify_placement.html">Placements</a></li>
+        <li><a href="ysify_techstack.html">Tech Stack</a></li>
+        <li><a href="ysify_about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn-nav-enroll">
+        <i class="fas fa-bolt"></i> Enroll Now
+      </a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="why-ysify.html" onclick="closeMobile()">🎯 Why YSIFY</a>
+      <a href="ysify_courses.html" onclick="closeMobile()">📚 Courses</a>
+      <a href="ysify_internship.html" onclick="closeMobile()">💼 Internship</a>
+      <a href="ysify_placement.html" onclick="closeMobile()">🚀 Placements</a>
+      <a href="ysify_techstack.html" onclick="closeMobile()">🛠️ Tech Stack</a>
+      <a href="ysify_about.html" onclick="closeMobile()">ℹ️ About</a>
+      <a href="contact.html" onclick="closeMobile()">📞 Contact</a>
+      <a href="contact.html" onclick="closeMobile()" class="m-enroll"
+        >⚡ Enroll Now — Free Consultation</a
+      >
+    </div>
+
+    <!-- ═══ CONTACT INFO + FORM ═══════════════════════════════════════ -->
+    <section id="contact-main">
+      <div class="s-inner">
+        <div class="contact-grid">
+          <!-- LEFT: Info -->
+          <div class="info-panel sr">
+            <div class="eyebrow">
+              <div class="eyebrow-dot"></div>
+              Contact Information
+            </div>
+            <h2 class="s-title">
+              Reach Us<br /><span class="g">Anytime</span>
+            </h2>
+            <p class="s-sub">
+              Whether you have a quick question or want to begin your
+              enrollment, we're just a call, email, or visit away.
+            </p>
+
+            <div class="info-items">
+              <div class="info-item">
+                <div class="info-icon ii-amber">
+                  <i class="fas fa-location-dot"></i>
+                </div>
+                <div>
+                  <div class="info-text-label">Visit Us</div>
+                  <div class="info-text-val">
+                    C1-206, Pragati IT Park,<br />Mota Varachha, Surat, Gujarat
+                    – 394101
+                  </div>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon ii-teal">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                  <div class="info-text-label">Call Us</div>
+                  <a href="tel:+919904230962" class="info-text-val"
+                    >+91 99042 30962</a
+                  >
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon ii-violet">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <div class="info-text-label">Email Us</div>
+                  <a href="mailto:info@ysify.in" class="info-text-val"
+                    >info@ysify.in</a
+                  ><br />
+                  <a
+                    href="mailto:yashvisavaliya3436@gmail.com"
+                    class="info-text-val"
+                    >yashvisavaliya3436@gmail.com</a
+                  >
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon ii-teal">
+                  <i class="fab fa-whatsapp"></i>
+                </div>
+                <div>
+                  <div class="info-text-label">WhatsApp</div>
+                  <a
+                    href="https://wa.me/919904230962"
+                    target="_blank"
+                    class="info-text-val"
+                    >Chat on WhatsApp</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Why contact chips -->
+            <div class="why-chips">
+              <div class="why-chip">
+                <div class="chip-dot"></div>
+                Course Guidance
+              </div>
+              <div class="why-chip">
+                <div class="chip-dot"></div>
+                Career Consultation
+              </div>
+              <div class="why-chip">
+                <div class="chip-dot"></div>
+                Internship Info
+              </div>
+              <div class="why-chip">
+                <div class="chip-dot"></div>
+                Enrollment Help
+              </div>
+              <div class="why-chip">
+                <div class="chip-dot"></div>
+                Training Support
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Form -->
+          <div class="form-panel sr">
+            <div id="contactForm">
+              <h3>Send Us A Message</h3>
+              <p class="form-sub">
+                Fill in the details below and our team will get back to you
+                within 24 hours.
+              </p>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Full Name <span class="req">*</span></label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Your full name"
+                    id="fieldName"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Email Address <span class="req">*</span></label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="your@email.com"
+                    id="fieldEmail"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Phone Number <span class="req">*</span></label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    placeholder="+91 00000 00000"
+                    id="fieldPhone"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Interested Course</label>
+                  <select class="form-control" id="fieldCourse">
+                    <option value="" disabled selected>Select a course</option>
+                    <option>AI Foundation</option>
+                    <option>AI Automation</option>
+                    <option>AI Agent Development</option>
+                    <option>Full Stack Web Development</option>
+                    <option>Python Development</option>
+                    <option>.NET Core Development</option>
+                    <option>Not decided yet</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Message</label>
+                <textarea
+                  class="form-control"
+                  placeholder="Tell us about your goals, questions, or how we can help you..."
+                  id="fieldMsg"
+                ></textarea>
+              </div>
+
+              <button
+                class="btn-submit"
+                id="submitBtn"
+                onclick="handleSubmit()"
+              >
+                <i class="fas fa-paper-plane"></i> Submit Inquiry
+              </button>
+            </div>
+
+            <div class="form-success" id="formSuccess">
+              <div class="success-icon"><i class="fas fa-check"></i></div>
+              <h4>Message Received! 🎉</h4>
+              <p>
+                Thank you for reaching out. Our team will get back to you within
+                24 hours. Meanwhile, feel free to WhatsApp us for a quick
+                response.
+              </p>
+              <br />
+              <a
+                href="https://wa.me/919904230962"
+                target="_blank"
+                class="btn-submit"
+                style="display: inline-flex; width: auto; margin: 0 auto"
+              >
+                <i class="fab fa-whatsapp"></i> WhatsApp Us Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ MAP ═══════════════════════════════════════════════════════ -->
+    <section id="map-section">
+      <div class="s-inner">
+        <div style="text-align: center; margin-bottom: 44px" class="sr">
+          <div class="eyebrow">
+            <div class="eyebrow-dot"></div>
+            Location
+          </div>
+          <h2 class="s-title">Find Us <span class="g">On The Map</span></h2>
+          <p class="s-sub" style="margin: 0 auto">
+            Conveniently located in the heart of Surat's IT hub — easy to reach
+            by any mode of transport.
+          </p>
+        </div>
+        <div class="map-wrapper sr">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.9457838254734!2d72.87246537524254!3d21.231831480459607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f0010416db1%3A0x9d68e4b7c4f9c345!2sPragati%20IT%20Park%2C%20Mota%20Varachha%2C%20Surat%2C%20Gujarat%20394101!5e0!3m2!1sen!2sin!4v1717000000000!5m2!1sen!2sin"
+            width="100%"
+            height="420"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="YSIFY Academy Location"
+          >
+          </iframe>
+          <div class="map-overlay-badge">
+            <div class="map-badge-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div>
+              <div class="map-badge-name">
+                YSIFY Skills & Innovation Academy
+              </div>
+              <div class="map-badge-addr">
+                C1-206, Pragati IT Park, Mota Varachha, Surat
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ WHATSAPP CTA ══════════════════════════════════════════════ -->
+    <section id="wa-cta">
+      <div class="wa-cta-inner">
+        <div class="wa-pill sr">
+          <i class="fas fa-bolt"></i> Need Immediate Assistance?
+        </div>
+        <h2 class="sr">
+          Talk to Us —
+          <span
+            style="
+              background: var(--grad-hero);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+            "
+            >Right Now</span
+          >
+        </h2>
+        <p class="sr">
+          Don't wait for email replies. Reach us directly on WhatsApp for<br />
+          instant answers to all your queries.
+        </p>
+        <div class="wa-btns sr">
+          <a href="https://wa.me/919904230962" target="_blank" class="btn-wa">
+            <i class="fab fa-whatsapp"></i> WhatsApp Us
+          </a>
+          <a href="tel:+919904230962" class="btn-call">
+            <i class="fas fa-phone"></i> +91 99042 30962
+          </a>
+          <a href="mailto:info@ysify.in" class="btn-email">
+            <i class="fas fa-envelope"></i> info@ysify.in
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══════════════════════════════════════════════════ -->
+    <!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">
+            <div class="footer-brand-row">
+              <span class="footer-name">YSIFY Academy</span>
+            </div>
+            <div class="footer-about">
+              Surat's premier skills academy for AI, software development &amp;
+              career growth. Empowering minds. Building futures.
+            </div>
+          </div>
+          <div class="footer-social">
+            <a
+              href="https://wa.me/919904230962"
+              class="social-btn"
+              title="WhatsApp"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/ysify_academy/"
+              class="social-btn"
+              title="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/company/ysify-skills-innovation-academy/?"
+              class="social-btn"
+              title="LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a
+              href="https://www.youtube.com/@ysifyacademy"
+              class="social-btn"
+              title="YouTube"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Programs</h5>
+          <ul>
+            <li><a href="ysify_courses.html">AI Foundation</a></li>
+            <li><a href="ysify_courses.html">AI Automation</a></li>
+            <li><a href="ysify_courses.html">AI Agent Dev</a></li>
+            <li><a href="ysify_courses.html">Web Development</a></li>
+            <li><a href="ysify_courses.html">Python Dev</a></li>
+            <li><a href="ysify_courses.html">.NET Core</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Academy</h5>
+          <ul>
+            <li><a href="why-ysify.html">Why YSIFY</a></li>
+            <li><a href="ysify_internship.html">Internship</a></li>
+            <li><a href="ysify_placement.html">Placements</a></li>
+            <li><a href="ysify_about.html">About Us</a></li>
+            <li><a href="ysify_techstack.html">Tech Stack</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:+919904230962">+91 99042 30962</a></li>
+            <li><a href="mailto:info@ysify.in">info@ysify.in</a></li>
+            <li>
+              <a href="contact.html"
+                >C1-206, Pragati IT Park,<br />Mota Varachha, Surat</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span
+          >© 2026 Ysify Skills &amp; Innovation Academy. All rights
+          reserved.</span
+        >
+        <div style="display: flex; gap: 20px">
+          <a href="https://ysify.in/privacy-policy" target="_blank"
+            >Privacy Policy</a
+          >
+          <a href="https://ysify.in/terms-of-use" target="_blank"
+            >Terms of Use</a
+          >
+          <a href="contact.html">Enroll Now</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* ── Navbar scroll ── */
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 20);
+      });
+
+      /* ── Mobile menu ── */
+      document.getElementById("hamburgerBtn").addEventListener("click", () => {
+        document.getElementById("mobileMenu").classList.toggle("open");
+      });
+      function closeMobile() {
+        document.getElementById("mobileMenu").classList.remove("open");
+      }
+
+      /* ── Scroll reveal ── */
+      const revealObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+              setTimeout(() => e.target.classList.add("visible"), i * 70);
+              revealObs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: "0px 0px -32px 0px" },
+      );
+      document.querySelectorAll(".sr").forEach((el) => revealObs.observe(el));
+
+      function handleSubmit() {
+        const name = document.getElementById("fieldName").value.trim();
+        const email = document.getElementById("fieldEmail").value.trim();
+        const phone = document.getElementById("fieldPhone").value.trim();
+        const course = document.getElementById("fieldCourse").value;
+        const message = document.getElementById("fieldMsg").value.trim();
+
+        if (!name || !email || !phone) {
+          alert("Please fill all required fields");
+          return;
+        }
+
+        const whatsappMessage = `📩 New Inquiry Received
+
+👤 Name: ${name}
+
+📧 Email: ${email}
+
+📱 Phone: ${phone}
+
+🎓 Course: ${course || "Not Selected"}
+
+📝 Message:
+${message || "No Message"}`;
+
+        const whatsappUrl = `https://wa.me/919904230962?text=${encodeURIComponent(whatsappMessage)}`;
+
+        window.open(whatsappUrl, "_blank");
+
+        document.getElementById("contactForm").style.display = "none";
+        document.getElementById("formSuccess").classList.add("show");
+
+        window.scrollTo({
+          top: document.getElementById("contact-main").offsetTop - 80,
+          behavior: "smooth",
+        });
+      }
+    </script>
+  </body>
+</html>

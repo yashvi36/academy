@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Stack — YSIFY Skills & Innovation Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ─── TOKENS ─────────────────────────────────────────────────── */
+:root {
+  --ink:     #0B0F1A;
+  --ink-2:   #1C2235;
+  --slate:   #4A5568;
+  --muted:   #8492A6;
+  --border:  #E4E9F0;
+  --surface: #F7F9FC;
+  --white:   #FFFFFF;
+
+  --teal:        #00C9A7;
+  --teal-d:      #00A98A;
+  --teal-glow:   rgba(0,201,167,0.18);
+  --violet:      #5B4FE9;
+  --violet-d:    #4338CA;
+  --violet-glow: rgba(91,79,233,0.18);
+  --amber:       #F59E0B;
+  --amber-glow:  rgba(245,158,11,0.15);
+  --coral:       #FF6B4A;
+
+  --grad-primary: linear-gradient(135deg, var(--teal), var(--violet));
+  --grad-hero:    linear-gradient(135deg, #05f0c0 0%, #5B4FE9 100%);
+
+  --shadow-xs: 0 1px 4px rgba(11,15,26,0.06);
+  --shadow-sm: 0 2px 12px rgba(11,15,26,0.08);
+  --shadow-md: 0 8px 32px rgba(11,15,26,0.10);
+  --shadow-lg: 0 20px 60px rgba(11,15,26,0.13);
+  --shadow-teal:   0 8px 32px rgba(0,201,167,0.28);
+  --shadow-violet: 0 8px 32px rgba(91,79,233,0.28);
+
+  --r:    14px;
+  --r-lg: 22px;
+  --r-xl: 32px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+img { max-width: 100%; }
+
+/* ─── SCROLL REVEAL ──────────────────────────────────────────── */
+.sr { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.sr.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── NAVBAR ─────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  height: 70px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%;
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: var(--shadow-md); }
+
+.nav-brand {
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-logo-mark {
+  width: 40px; height: 40px; border-radius: 11px;
+  background: var(--grad-primary);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900; font-size: 15px; letter-spacing: -0.5px;
+  box-shadow: var(--shadow-teal);
+  position: relative; overflow: hidden;
+}
+.nav-logo-mark::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%);
+}
+.nav-wordmark {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800; font-size: 18px; color: var(--ink);
+  letter-spacing: -0.4px;
+}
+.nav-wordmark span { background: var(--grad-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 4px; list-style: none;
+}
+.nav-links a {
+  text-decoration: none; color: var(--slate);
+  font-size: 14px; font-weight: 500;
+  padding: 7px 13px; border-radius: 8px;
+  transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--teal); background: var(--teal-glow); }
+.nav-links a.active { color: var(--teal); font-weight: 600; }
+
+.btn-nav-enroll {
+  background: var(--grad-primary);
+  color: white; font-size: 14px; font-weight: 700;
+  padding: 9px 20px; border-radius: 9px;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+  box-shadow: var(--shadow-teal); transition: all 0.25s;
+  white-space: nowrap;
+}
+.btn-nav-enroll:hover { transform: translateY(-1px); box-shadow: 0 12px 36px rgba(0,201,167,0.35); }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 6px; border: none; background: none;
+}
+.hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; display: block; transition: all 0.3s; }
+
+.mobile-menu {
+  display: none; position: fixed; top: 70px; left: 0; right: 0;
+  background: white; border-bottom: 1px solid var(--border);
+  padding: 16px 5%; z-index: 999; flex-direction: column; gap: 4px;
+  box-shadow: var(--shadow-lg);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  text-decoration: none; color: var(--slate);
+  font-size: 15px; font-weight: 500;
+  padding: 12px 16px; border-radius: 10px; transition: all 0.2s;
+}
+.mobile-menu a:hover { background: var(--surface); color: var(--teal); }
+.mobile-menu .m-enroll {
+  background: var(--grad-primary); color: white !important;
+  text-align: center; font-weight: 700; margin-top: 8px;
+  border-radius: 10px;
+}
+
+/* ─── SECTION UTILS ──────────────────────────────────────────── */
+section { padding: 90px 5%; }
+.s-inner { max-width: 1280px; margin: 0 auto; }
+.s-header { margin-bottom: 60px; }
+.s-header.center { text-align: center; }
+.s-header.center .s-sub { margin: 0 auto; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12px; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 14px;
+}
+.eyebrow-dot { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; }
+
+.s-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(28px, 3.8vw, 46px); font-weight: 900;
+  line-height: 1.1; letter-spacing: -1.2px; color: var(--ink);
+  margin-bottom: 16px;
+}
+.s-title .g { background: var(--grad-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.s-title .v { color: var(--violet); }
+.s-title .t { color: var(--teal); }
+
+.s-sub {
+  font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 620px;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 11px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  text-decoration: none; border: none; font-family: 'Inter', sans-serif;
+  transition: all 0.25s; white-space: nowrap;
+}
+.btn-primary {
+  background: var(--grad-primary); color: white;
+  box-shadow: var(--shadow-teal);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(0,201,167,0.38); }
+.btn-secondary {
+  background: white; color: var(--violet);
+  border: 2px solid rgba(91,79,233,0.2);
+  box-shadow: var(--shadow-xs);
+}
+.btn-secondary:hover { border-color: var(--violet); background: rgba(91,79,233,0.04); transform: translateY(-2px); }
+
+/* ─── PAGE HERO ──────────────────────────────────────────────── */
+#page-hero {
+  min-height: 58vh; padding-top: 70px;
+  display: flex; align-items: center;
+  background: linear-gradient(140deg, #f0fdfb 0%, #f5f3ff 50%, #fff8f0 100%);
+  position: relative; overflow: hidden;
+}
+#page-hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1.2' fill='%2300c9a7' fill-opacity='0.07'/%3E%3C/svg%3E");
+}
+.orb {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  filter: blur(80px); opacity: 0.55;
+}
+.orb-1 { width: 520px; height: 520px; background: radial-gradient(circle, rgba(0,201,167,0.22), transparent 70%); top: -160px; right: -100px; }
+.orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(91,79,233,0.16), transparent 70%); bottom: -80px; left: -100px; }
+
+.hero-inner {
+  max-width: 1280px; margin: 0 auto; padding: 80px 0 60px;
+  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: 80px;
+}
+.hero-text { flex: 1; min-width: 0; }
+.hero-text .eyebrow { color: var(--teal); }
+.hero-h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(36px, 5vw, 62px); font-weight: 900;
+  line-height: 1.05; letter-spacing: -2px; color: var(--ink);
+  margin-bottom: 22px;
+}
+.hero-h1 .g { background: var(--grad-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-desc {
+  font-size: clamp(15px, 1.8vw, 18px); color: var(--slate);
+  line-height: 1.8; max-width: 560px; margin-bottom: 36px;
+}
+.hero-stats {
+  display: flex; gap: 36px; flex-wrap: wrap;
+}
+.h-stat {
+  display: flex; flex-direction: column;
+}
+.h-stat-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 32px; font-weight: 900; letter-spacing: -1px;
+  background: var(--grad-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.h-stat-label { font-size: 12px; color: var(--muted); font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; }
+
+.hero-visual {
+  flex-shrink: 0; width: 380px;
+}
+.tech-pill-cloud {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+}
+.tp {
+  padding: 8px 16px; border-radius: 50px;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.2px;
+  border: 1.5px solid; white-space: nowrap;
+  animation: float-pill 4s ease-in-out infinite;
+}
+.tp-teal { background: var(--teal-glow); border-color: rgba(0,201,167,0.3); color: var(--teal-d); }
+.tp-violet { background: var(--violet-glow); border-color: rgba(91,79,233,0.25); color: var(--violet-d); }
+.tp-amber { background: var(--amber-glow); border-color: rgba(245,158,11,0.3); color: #B45309; }
+.tp-coral { background: rgba(255,107,74,0.1); border-color: rgba(255,107,74,0.3); color: #C2410C; }
+
+@keyframes float-pill {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.tp:nth-child(2) { animation-delay: 0.3s; }
+.tp:nth-child(3) { animation-delay: 0.6s; }
+.tp:nth-child(4) { animation-delay: 0.9s; }
+.tp:nth-child(5) { animation-delay: 1.2s; }
+.tp:nth-child(6) { animation-delay: 1.5s; }
+.tp:nth-child(7) { animation-delay: 1.8s; }
+.tp:nth-child(8) { animation-delay: 2.1s; }
+.tp:nth-child(9) { animation-delay: 2.4s; }
+.tp:nth-child(10) { animation-delay: 0.15s; }
+.tp:nth-child(11) { animation-delay: 0.45s; }
+.tp:nth-child(12) { animation-delay: 0.75s; }
+
+/* ─── CATEGORY FILTER TABS ───────────────────────────────────── */
+#filter-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 70px; z-index: 100;
+  padding: 0 5%;
+  box-shadow: var(--shadow-xs);
+}
+.filter-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; gap: 4px; overflow-x: auto;
+  padding: 14px 0; scrollbar-width: none;
+}
+.filter-inner::-webkit-scrollbar { display: none; }
+.filter-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 50px; border: 1.5px solid var(--border);
+  background: var(--white); color: var(--slate);
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: all 0.2s; white-space: nowrap; font-family: 'Inter', sans-serif;
+}
+.filter-btn:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-glow); }
+.filter-btn.active { background: var(--grad-primary); color: white; border-color: transparent; box-shadow: var(--shadow-teal); }
+.filter-btn .f-count {
+  background: rgba(255,255,255,0.2); border-radius: 50px;
+  padding: 1px 7px; font-size: 11px; font-weight: 700;
+}
+.filter-btn:not(.active) .f-count {
+  background: var(--surface); color: var(--muted);
+}
+
+/* ─── TECH GRID SECTION ──────────────────────────────────────── */
+#tech-grid { padding-top: 70px; }
+
+/* ─── CATEGORY CARD ──────────────────────────────────────────── */
+.cat-block {
+  margin-bottom: 56px;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.cat-block.hidden { display: none; }
+
+.cat-header {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 28px; padding-bottom: 20px;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+.cat-header::after {
+  content: ''; position: absolute; bottom: -2px; left: 0;
+  width: 60px; height: 2px;
+  background: var(--grad-primary);
+  border-radius: 2px;
+}
+
+.cat-icon {
+  width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.cat-icon.teal   { background: var(--teal-glow); }
+.cat-icon.violet { background: var(--violet-glow); }
+.cat-icon.amber  { background: var(--amber-glow); }
+.cat-icon.coral  { background: rgba(255,107,74,0.1); }
+.cat-icon.sky    { background: rgba(14,165,233,0.1); }
+.cat-icon.green  { background: rgba(16,185,129,0.1); }
+.cat-icon.pink   { background: rgba(236,72,153,0.1); }
+.cat-icon.indigo { background: rgba(99,102,241,0.1); }
+
+.cat-meta { flex: 1; min-width: 0; }
+.cat-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+.cat-desc { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+.cat-badge {
+  padding: 5px 14px; border-radius: 50px; font-size: 12px; font-weight: 700;
+  white-space: nowrap; flex-shrink: 0;
+}
+.cat-badge.teal   { background: var(--teal-glow); color: var(--teal-d); }
+.cat-badge.violet { background: var(--violet-glow); color: var(--violet-d); }
+.cat-badge.amber  { background: var(--amber-glow); color: #B45309; }
+.cat-badge.coral  { background: rgba(255,107,74,0.1); color: #C2410C; }
+.cat-badge.sky    { background: rgba(14,165,233,0.1); color: #0369A1; }
+.cat-badge.green  { background: rgba(16,185,129,0.1); color: #065F46; }
+.cat-badge.pink   { background: rgba(236,72,153,0.1); color: #9D174D; }
+.cat-badge.indigo { background: rgba(99,102,241,0.1); color: #4338CA; }
+
+/* ─── TECH TAGS ──────────────────────────────────────────────── */
+.tech-tags {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.tech-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px; border-radius: 10px;
+  background: var(--surface); border: 1.5px solid var(--border);
+  font-size: 13.5px; font-weight: 600; color: var(--ink);
+  transition: all 0.2s; cursor: default;
+  letter-spacing: 0.1px;
+}
+.tech-tag:hover {
+  border-color: var(--teal); background: var(--teal-glow); color: var(--teal-d);
+  transform: translateY(-2px); box-shadow: var(--shadow-sm);
+}
+.tech-tag i { font-size: 14px; opacity: 0.75; }
+
+/* Sub-group inside category (e.g. Relational / NoSQL / Cloud DBs) */
+.sub-group { margin-bottom: 24px; }
+.sub-group:last-child { margin-bottom: 0; }
+.sub-group-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 1.4px;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.sub-group-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* ─── STATS BAR ──────────────────────────────────────────────── */
+#stats-bar {
+  background: var(--ink);
+  padding: 40px 5%;
+}
+.stats-bar-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 32px; text-align: center;
+}
+.sb-stat { display: flex; flex-direction: column; gap: 4px; }
+.sb-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 42px; font-weight: 900; letter-spacing: -1.5px;
+  background: var(--grad-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.sb-label { font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 500; text-transform: uppercase; letter-spacing: 0.6px; }
+
+/* ─── LEARNING APPROACH SECTION ──────────────────────────────── */
+#approach { background: var(--surface); }
+.approach-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.appr-card {
+  background: var(--white); border-radius: var(--r-lg);
+  padding: 32px; border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-xs); transition: all 0.3s;
+}
+.appr-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(0,201,167,0.25); }
+.appr-icon {
+  width: 54px; height: 54px; border-radius: 14px;
+  background: var(--grad-primary); display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: white; margin-bottom: 20px;
+  box-shadow: var(--shadow-teal);
+}
+.appr-card h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px; font-weight: 800; color: var(--ink);
+  margin-bottom: 10px; letter-spacing: -0.3px;
+}
+.appr-card p { font-size: 14.5px; color: var(--slate); line-height: 1.7; }
+
+/* ─── CTA SECTION ────────────────────────────────────────────── */
+#cta {
+  padding: 100px 5%;
+  background: linear-gradient(135deg, var(--ink) 0%, var(--ink-2) 100%);
+  position: relative; overflow: hidden;
+}
+#cta::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='%2300c9a7' fill-opacity='0.05'/%3E%3C/svg%3E");
+}
+.cta-inner {
+  max-width: 720px; margin: 0 auto; text-align: center;
+  position: relative; z-index: 1;
+}
+.cta-pill {
+  display: inline-block; padding: 7px 18px; border-radius: 50px;
+  background: rgba(0,201,167,0.12); border: 1px solid rgba(0,201,167,0.25);
+  color: var(--teal); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.5px; margin-bottom: 24px;
+}
+#cta .s-title { color: var(--white); margin-bottom: 16px; }
+#cta .s-sub { color: rgba(255,255,255,0.65); margin: 0 auto 40px; }
+.cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-cta-white {
+  background: var(--white); color: var(--ink);
+  padding: 15px 30px; border-radius: 11px;
+  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  box-shadow: 0 8px 32px rgba(255,255,255,0.12); transition: all 0.25s;
+}
+.btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(255,255,255,0.18); }
+.btn-outline-white {
+  background: transparent; color: var(--white);
+  border: 2px solid rgba(255,255,255,0.25);
+  padding: 15px 30px; border-radius: 11px;
+  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.25s;
+}
+.btn-outline-white:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.06); transform: translateY(-2px); }
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+footer {
+  background: #070A14;
+  padding: 70px 5% 0;
+  color: rgba(255,255,255,0.65);
+}
+.footer-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px; padding-bottom: 60px;
+}
+.footer-brand-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.footer-logo {
+  width: 42px; height: 42px; border-radius: 11px;
+  background: var(--grad-primary); color: white;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900; font-size: 14px; letter-spacing: -0.5px;
+  display: flex; align-items: center; justify-content: center;
+}
+.footer-name { color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 17px; }
+.footer-about { font-size: 14px; line-height: 1.75; max-width: 280px; margin-bottom: 24px; }
+.footer-social { display: flex; gap: 10px; }
+.social-btn {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.65); font-size: 14px;
+  text-decoration: none; transition: all 0.2s;
+}
+.social-btn:hover { background: var(--teal); color: white; border-color: var(--teal); }
+.footer-col h5 { color: white; font-size: 14px; font-weight: 700; margin-bottom: 18px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.footer-col ul a:hover { color: var(--teal); }
+.footer-bottom {
+  max-width: 1280px; margin: 0 auto;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 24px 0;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px; gap: 16px; flex-wrap: wrap;
+}
+.footer-bottom a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--teal); }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-visual { display: none; }
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+  .approach-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+@media (max-width: 768px) {
+  .nav-links, .btn-nav-enroll { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 70px 5%; }
+  #tech-grid { padding-top: 50px; }
+  .hero-inner { padding: 60px 0 40px; }
+  .hero-stats { gap: 24px; }
+  .h-stat-num { font-size: 26px; }
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .sb-num { font-size: 32px; }
+  .approach-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .cat-badge { display: none; }
+  .cat-name { font-size: 19px; }
+}
+@media (max-width: 480px) {
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+  .hero-h1 { font-size: 32px; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .btn-cta-white, .btn-outline-white { width: 100%; justify-content: center; }
+}
+.nav-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+}
+
+.nav-logo{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+}
+
+.brand-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.1;
+}
+
+.brand-text h3{
+    margin:0;
+    font-size:26px;
+    font-weight:800;
+    color:#0f172a;
+}
+
+.brand-text span{
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#64748b;
+}
+
+
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <img src="images/ysify-logo.png" alt="YSIFY Logo" class="nav-logo">
+
+    <div class="brand-text">
+        <h3>YSIFY</h3>
+        <span>Skills & Innovation Academy</span>
+    </div>
+</a>
+  <ul class="nav-links">
+    <li><a href="why-ysify.html" >Why YSIFY</a></li>
+    <li><a href="ysify_courses.html" >Courses</a></li>
+    <li><a href="ysify_internship.html">Internship</a></li>
+    <li><a href="ysify_placement.html">Placements</a></li>
+    <li><a href="ysify_techstack.html" class="active">Tech Stack</a></li>
+    <li><a href="ysify_about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="btn-nav-enroll">
+    <i class="fas fa-bolt"></i> Enroll Now
+  </a>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="why-ysify.html"          onclick="closeMobile()">🎯 Why YSIFY</a>
+  <a href="ysify_courses.html"      onclick="closeMobile()">📚 Courses</a>
+  <a href="ysify_internship.html"   onclick="closeMobile()">💼 Internship</a>
+  <a href="ysify_placement.html"    onclick="closeMobile()">🚀 Placements</a>
+  <a href="ysify_techstack.html" onclick="closeMobile()">🛠️ Tech Stack</a>
+  <a href="ysify_about.html"        onclick="closeMobile()">ℹ️ About</a>
+  <a href="contact.html"      onclick="closeMobile()">📞 Contact</a>
+  <a href="contact.html"      onclick="closeMobile()" class="m-enroll">⚡ Enroll Now — Free Consultation</a>
+</div>
+
+<!-- ═══ PAGE HERO ══════════════════════════════════════════════ -->
+<section id="page-hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="s-inner hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow sr"><div class="eyebrow-dot"></div> Industry-Relevant Curriculum</div>
+      <h1 class="hero-h1 sr">Technologies We<br><span class="g">Teach & Train</span></h1>
+      <p class="hero-desc sr">At YSIFY Skills & Innovation Academy, students gain hands-on experience with the exact tech stacks used by modern software companies, startups, and AI-first organizations worldwide.</p>
+      <div class="hero-stats sr">
+        <div class="h-stat">
+          <span class="h-stat-num">80+</span>
+          <span class="h-stat-label">Technologies</span>
+        </div>
+        <div class="h-stat">
+          <span class="h-stat-num">11</span>
+          <span class="h-stat-label">Categories</span>
+        </div>
+        <div class="h-stat">
+          <span class="h-stat-num">100%</span>
+          <span class="h-stat-label">Industry-Aligned</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual sr">
+      <div class="tech-pill-cloud">
+        <span class="tp tp-teal">Python</span>
+        <span class="tp tp-violet">React.js</span>
+        <span class="tp tp-amber">AWS</span>
+        <span class="tp tp-coral">Docker</span>
+        <span class="tp tp-teal">Machine Learning</span>
+        <span class="tp tp-violet">Node.js</span>
+        <span class="tp tp-amber">PostgreSQL</span>
+        <span class="tp tp-coral">Kubernetes</span>
+        <span class="tp tp-teal">Generative AI</span>
+        <span class="tp tp-violet">TypeScript</span>
+        <span class="tp tp-amber">Azure</span>
+        <span class="tp tp-coral">MongoDB</span>
+        <span class="tp tp-teal">ASP.NET Core</span>
+        <span class="tp tp-violet">Vue.js</span>
+        <span class="tp tp-amber">LLM Integration</span>
+        <span class="tp tp-coral">GitHub Actions</span>
+        <span class="tp tp-teal">RAG</span>
+        <span class="tp tp-violet">Tailwind CSS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FILTER BAR ════════════════════════════════════════════ -->
+<div id="filter-bar">
+  <div class="filter-inner">
+    <button class="filter-btn active" data-cat="all" onclick="filterCat('all', this)">
+      <i class="fas fa-th"></i> All Categories <span class="f-count">11</span>
+    </button>
+    <button class="filter-btn" data-cat="fundamentals" onclick="filterCat('fundamentals', this)">
+      <i class="fas fa-code"></i> Programming <span class="f-count">10</span>
+    </button>
+    <button class="filter-btn" data-cat="frontend" onclick="filterCat('frontend', this)">
+      <i class="fas fa-palette"></i> Frontend <span class="f-count">10</span>
+    </button>
+    <button class="filter-btn" data-cat="backend" onclick="filterCat('backend', this)">
+      <i class="fas fa-server"></i> Backend <span class="f-count">8</span>
+    </button>
+    <button class="filter-btn" data-cat="database" onclick="filterCat('database', this)">
+      <i class="fas fa-database"></i> Database <span class="f-count">18</span>
+    </button>
+    <button class="filter-btn" data-cat="ai" onclick="filterCat('ai', this)">
+      <i class="fas fa-brain"></i> AI & Data <span class="f-count">13</span>
+    </button>
+    <button class="filter-btn" data-cat="aitools" onclick="filterCat('aitools', this)">
+      <i class="fas fa-robot"></i> AI Tools <span class="f-count">7</span>
+    </button>
+    <button class="filter-btn" data-cat="cloud" onclick="filterCat('cloud', this)">
+      <i class="fas fa-cloud"></i> Cloud <span class="f-count">5</span>
+    </button>
+    <button class="filter-btn" data-cat="devops" onclick="filterCat('devops', this)">
+      <i class="fas fa-rocket"></i> DevOps <span class="f-count">9</span>
+    </button>
+    <button class="filter-btn" data-cat="infra" onclick="filterCat('infra', this)">
+      <i class="fas fa-globe"></i> Infrastructure <span class="f-count">8</span>
+    </button>
+    <button class="filter-btn" data-cat="security" onclick="filterCat('security', this)">
+      <i class="fas fa-shield-halved"></i> Security <span class="f-count">6</span>
+    </button>
+    <button class="filter-btn" data-cat="tools" onclick="filterCat('tools', this)">
+      <i class="fas fa-screwdriver-wrench"></i> Dev Tools <span class="f-count">7</span>
+    </button>
+  </div>
+</div>
+
+<!-- ═══ TECH GRID ══════════════════════════════════════════════ -->
+<section id="tech-grid">
+  <div class="s-inner">
+
+    <!-- Programming Fundamentals -->
+    <div class="cat-block sr" data-cat="fundamentals">
+      <div class="cat-header">
+        <div class="cat-icon teal">💻</div>
+        <div class="cat-meta">
+          <div class="cat-name">Programming Fundamentals</div>
+          <div class="cat-desc">Core languages that form the foundation of all software development — taught from ground-up to production level.</div>
+        </div>
+        <span class="cat-badge teal">10 Languages</span>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag"><i class="fas fa-c"></i> C</span>
+        <span class="tech-tag"><i class="fas fa-code"></i> C++</span>
+        <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+        <span class="tech-tag"><i class="fas fa-hashtag"></i> C#</span>
+        <span class="tech-tag"><i class="fab fa-java"></i> Java</span>
+        <span class="tech-tag"><i class="fab fa-js"></i> JavaScript</span>
+        <span class="tech-tag"><i class="fas fa-code"></i> TypeScript</span>
+        <span class="tech-tag"><i class="fab fa-php"></i> PHP</span>
+        <span class="tech-tag"><i class="fas fa-chart-bar"></i> R</span>
+        <span class="tech-tag"><i class="fab fa-apple"></i> Objective-C</span>
+      </div>
+    </div>
+
+    <!-- Frontend Development -->
+    <div class="cat-block sr" data-cat="frontend">
+      <div class="cat-header">
+        <div class="cat-icon violet">🎨</div>
+        <div class="cat-meta">
+          <div class="cat-name">Frontend Development</div>
+          <div class="cat-desc">Build stunning, performant user interfaces and web applications using modern frontend frameworks and tooling.</div>
+        </div>
+        <span class="cat-badge violet">10 Technologies</span>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag"><i class="fab fa-html5"></i> HTML5</span>
+        <span class="tech-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+        <span class="tech-tag"><i class="fab fa-js"></i> JavaScript</span>
+        <span class="tech-tag"><i class="fas fa-code"></i> jQuery</span>
+        <span class="tech-tag"><i class="fab fa-react"></i> React.js</span>
+        <span class="tech-tag"><i class="fab fa-angular"></i> Angular</span>
+        <span class="tech-tag"><i class="fab fa-vuejs"></i> Vue.js</span>
+        <span class="tech-tag"><i class="fas fa-code"></i> TypeScript</span>
+        <span class="tech-tag"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+        <span class="tech-tag"><i class="fas fa-wind"></i> Tailwind CSS</span>
+      </div>
+    </div>
+
+    <!-- Backend Development -->
+    <div class="cat-block sr" data-cat="backend">
+      <div class="cat-header">
+        <div class="cat-icon amber">⚙️</div>
+        <div class="cat-meta">
+          <div class="cat-name">Backend Development</div>
+          <div class="cat-desc">Design and build scalable server-side applications, REST APIs, and microservices architectures.</div>
+        </div>
+        <span class="cat-badge amber">8 Technologies</span>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+        <span class="tech-tag"><i class="fas fa-hashtag"></i> ASP.NET Core (C#)</span>
+        <span class="tech-tag"><i class="fab fa-java"></i> Java</span>
+        <span class="tech-tag"><i class="fab fa-node-js"></i> Node.js</span>
+        <span class="tech-tag"><i class="fas fa-server"></i> Express.js</span>
+        <span class="tech-tag"><i class="fab fa-php"></i> PHP</span>
+        <span class="tech-tag"><i class="fas fa-plug"></i> REST APIs</span>
+        <span class="tech-tag"><i class="fas fa-cubes"></i> Microservices Architecture</span>
+      </div>
+    </div>
+
+    <!-- Database Technologies -->
+    <div class="cat-block sr" data-cat="database">
+      <div class="cat-header">
+        <div class="cat-icon sky">🗄️</div>
+        <div class="cat-meta">
+          <div class="cat-name">Database Technologies</div>
+          <div class="cat-desc">Relational, NoSQL, and cloud-native database systems — from schema design to performance optimization.</div>
+        </div>
+        <span class="cat-badge sky">18 Databases</span>
+      </div>
+
+      <div class="sub-group">
+        <div class="sub-group-label">Relational Databases</div>
+        <div class="tech-tags">
+          <span class="tech-tag"><i class="fas fa-elephant" style="color:#336791"></i> PostgreSQL</span>
+          <span class="tech-tag"><i class="fas fa-database" style="color:#4479A1"></i> MySQL</span>
+          <span class="tech-tag"><i class="fas fa-windows" style="color:#CC2927"></i> SQL Server</span>
+          <span class="tech-tag"><i class="fas fa-database" style="color:#F80000"></i> Oracle Database</span>
+          <span class="tech-tag"><i class="fas fa-database"></i> MariaDB</span>
+          <span class="tech-tag"><i class="fas fa-feather"></i> SQLite</span>
+        </div>
+      </div>
+
+      <div class="sub-group">
+        <div class="sub-group-label">NoSQL Databases</div>
+        <div class="tech-tags">
+          <span class="tech-tag"><i class="fas fa-leaf" style="color:#4DB33D"></i> MongoDB</span>
+          <span class="tech-tag"><i class="fas fa-bolt" style="color:#DC382D"></i> Redis</span>
+          <span class="tech-tag"><i class="fas fa-ring"></i> Apache Cassandra</span>
+          <span class="tech-tag"><i class="fas fa-couch"></i> Couchbase</span>
+          <span class="tech-tag"><i class="fab fa-aws"></i> DynamoDB</span>
+          <span class="tech-tag"><i class="fas fa-circle-nodes"></i> Neo4j</span>
+        </div>
+      </div>
+
+      <div class="sub-group">
+        <div class="sub-group-label">Cloud Databases</div>
+        <div class="tech-tags">
+          <span class="tech-tag"><i class="fab fa-microsoft"></i> Azure SQL Database</span>
+          <span class="tech-tag"><i class="fab fa-aws"></i> Amazon Aurora</span>
+          <span class="tech-tag"><i class="fab fa-google"></i> Google Cloud SQL</span>
+          <span class="tech-tag"><i class="fas fa-fire" style="color:#FFCA28"></i> Firebase Firestore</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI & Data Science -->
+    <div class="cat-block sr" data-cat="ai">
+      <div class="cat-header">
+        <div class="cat-icon violet">🤖</div>
+        <div class="cat-meta">
+          <div class="cat-name">Artificial Intelligence & Data Science</div>
+          <div class="cat-desc">From classical ML to cutting-edge Generative AI, LLM integration, and autonomous AI agent systems.</div>
+        </div>
+        <span class="cat-badge violet">13 Topics</span>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag"><i class="fab fa-python"></i> Python for AI</span>
+        <span class="tech-tag"><i class="fas fa-calculator"></i> NumPy</span>
+        <span class="tech-tag"><i class="fas fa-table"></i> Pandas</span>
+        <span class="tech-tag"><i class="fas fa-chart-line"></i> Matplotlib</span>
+        <span class="tech-tag"><i class="fas fa-brain"></i> Machine Learning</span>
+        <span class="tech-tag"><i class="fas fa-network-wired"></i> Deep Learning</span>
+        <span class="tech-tag"><i class="fas fa-wand-magic-sparkles"></i> Generative AI</span>
+        <span class="tech-tag"><i class="fas fa-message"></i> Prompt Engineering</span>
+        <span class="tech-tag"><i class="fas fa-robot"></i> AI Agents</span>
+        <span class="tech-tag"><i class="fas fa-gears"></i> Agentic AI</span>
+        <span class="tech-tag"><i class="fas fa-magnifying-glass"></i> RAG</span>
+        <span class="tech-tag"><i class="fas fa-plug-circle-bolt"></i> MCP</span>
+        <span class="tech-tag"><i class="fas fa-microchip"></i> LLM Integration</span>
+      </div>
+    </div>
+
+    <!-- AI Tools -->
+    <div class="cat-block sr" data-cat="aitools">
+      <div class="cat-header">
+        <div class="cat-icon teal">🧠</div>
+        <div class="cat-meta">
+          <div class="cat-name">AI Tools & Productivity Platforms</div>
+          <div class="cat-desc">Master the AI-powered tools that top engineers and creators use daily to 10× their productivity.</div>
+        </div>
+        <span class="cat-badge teal">7 Platforms</span>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag"><i class="fas fa-comment-dots"></i> ChatGPT</span>
+        <span class="tech-tag"><i class="fab fa-google"></i> Gemini</span>
+        <span class="tech-tag"><i class="fas fa-atom"></i> Claude</span>
+        <span class="tech-tag"><i class="fab fa-github"></i> GitHub Copilot</span>
+        <span class="tech-tag"><i class="fas fa-arrow-pointer"></i> Cursor AI</span>
+        <span class="tech-tag"><i class="fas fa-wind"></i> Windsurf</span>
+        <span class="tech-tag"><i class="fas fa-magnifying-glass"></i> Perplexity AI</span>
+        <span class="tech-tag"><i class="fas fa-book-open"></i> NotebookLM</span>
+      </div>
+    </div>
+
+    <!-- Cloud Computing -->
+    <div class="cat-block sr" data-cat="cloud">
+      <div class="cat-header">
+        <div class="cat-icon sky">☁️</div>
+        <div class="cat-meta">
+          <div class="cat-name">Cloud Computing</div>
+          <div class="cat-desc">Deploy, scale, and manage applications on the world's leading cloud platforms — AWS, Azure, and GCP.</div>
+        </div>
+        <span class="cat-badge sky">5 Platforms</span>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag"><i class="fab fa-aws"></i> Amazon Web Services (AWS)</span>
+        <span class="tech-tag"><i class="fab fa-microsoft"></i> Microsoft Azure</span>
+        <span class="tech-tag"><i class="fab fa-google"></i> Google Cloud Platform (GCP)</span>
+        <span class="tech-tag"><i class="fas fa-droplet"></i> DigitalOcean</span>
+        <span class="tech-tag"><i class="fas fa-cloud"></i> Oracle Cloud (OCI)</span>
+      </div>
+    </div>
+
+    <!-- DevOps -->
+    <div class="cat-block sr" data-cat="devops">
+      <div class="cat-header">
+        <div class="cat-icon coral">🚀</div>
+        <div class="cat-meta">
+          <div class="cat-name">DevOps & Deployment</div>
+          <div class="cat-desc">Automate, containerize, and continuously deliver software with industry-standard DevOps pipelines.</div>
+        </div>
+        <span class="cat-badge coral">9 Technologies</span>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag"><i class="fab fa-docker"></i> Docker</span>
+        <span class="tech-tag"><i class="fas fa-dharmachakra"></i> Kubernetes</span>
+        <span class="tech-tag"><i class="fab fa-git-alt"></i> Git</span>
+        <span class="tech-tag"><i class="fab fa-github"></i> GitHub</span>
+        <span class="tech-tag"><i class="fas fa-play-circle"></i> GitHub Actions</span>
+        <span class="tech-tag"><i class="fas fa-wrench"></i> Jenkins</span>
+        <span class="tech-tag"><i class="fas fa-layer-group"></i> Terraform</span>
+        <span class="tech-tag"><i class="fas fa-gears"></i> Ansible</span>
+        <span class="tech-tag"><i class="fas fa-arrows-spin"></i> CI/CD Pipelines</span>
+      </div>
+    </div>
+
+    <!-- Infrastructure -->
+    <div class="cat-block sr" data-cat="infra">
+      <div class="cat-header">
+        <div class="cat-icon green">🌐</div>
+        <div class="cat-meta">
+          <div class="cat-name">Web Servers & Infrastructure</div>
+          <div class="cat-desc">Configure, manage, and optimize production-grade web server infrastructure and Linux environments.</div>
+        </div>
+        <span class="cat-badge green">8 Topics</span>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag"><i class="fas fa-n"></i> Nginx</span>
+        <span class="tech-tag"><i class="fas fa-feather"></i> Apache HTTP Server</span>
+        <span class="tech-tag"><i class="fab fa-windows"></i> IIS</span>
+        <span class="tech-tag"><i class="fas fa-lock"></i> Caddy</span>
+        <span class="tech-tag"><i class="fas fa-bolt"></i> LiteSpeed</span>
+        <span class="tech-tag"><i class="fab fa-linux"></i> Linux Server Administration</span>
+        <span class="tech-tag"><i class="fas fa-server"></i> VPS Hosting</span>
+        <span class="tech-tag"><i class="fas fa-cloud-arrow-up"></i> Cloud Deployment</span>
+        <span class="tech-tag"><i class="fas fa-globe"></i> Domain & DNS Management</span>
+      </div>
+    </div>
+
+    <!-- Security -->
+    <div class="cat-block sr" data-cat="security">
+      <div class="cat-header">
+        <div class="cat-icon pink">🔒</div>
+        <div class="cat-meta">
+          <div class="cat-name">Security & Authentication</div>
+          <div class="cat-desc">Build secure systems with modern authentication protocols, identity management, and API security best practices.</div>
+        </div>
+        <span class="cat-badge pink">6 Topics</span>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag"><i class="fas fa-key"></i> JWT Authentication</span>
+        <span class="tech-tag"><i class="fas fa-id-card"></i> OAuth 2.0</span>
+        <span class="tech-tag"><i class="fas fa-fingerprint"></i> WebAuthn / Passkeys</span>
+        <span class="tech-tag"><i class="fas fa-shield-halved"></i> API Security</span>
+        <span class="tech-tag"><i class="fas fa-user-shield"></i> Identity Management</span>
+        <span class="tech-tag"><i class="fas fa-lock"></i> Secure Auth Systems</span>
+      </div>
+    </div>
+
+    <!-- Dev Tools -->
+    <div class="cat-block sr" data-cat="tools">
+      <div class="cat-header">
+        <div class="cat-icon indigo">📱</div>
+        <div class="cat-meta">
+          <div class="cat-name">Software Development Tools</div>
+          <div class="cat-desc">Professional IDEs, API testing suites, and database management tools used in real engineering teams.</div>
+        </div>
+        <span class="cat-badge indigo">7 Tools</span>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag"><i class="fab fa-microsoft"></i> Visual Studio</span>
+        <span class="tech-tag"><i class="fas fa-code"></i> VS Code</span>
+        <span class="tech-tag"><i class="fas fa-paper-plane"></i> Postman</span>
+        <span class="tech-tag"><i class="fab fa-github"></i> GitHub</span>
+        <span class="tech-tag"><i class="fab fa-docker"></i> Docker Desktop</span>
+        <span class="tech-tag"><i class="fas fa-table-columns"></i> SSMS</span>
+        <span class="tech-tag"><i class="fas fa-elephant" style="color:#336791"></i> pgAdmin</span>
+      </div>
+    </div>
+
+  </div><!-- /.s-inner -->
+</section>
+
+
+
+<!-- ═══ CTA ════════════════════════════════════════════════════ -->
+<section id="cta">
+  <div class="cta-inner sr">
+    <div class="cta-pill"> Next Batch Starting </div>
+    <h2 class="s-title">Ready to Master<br><span class="g">These Technologies?</span></h2>
+    <p class="s-sub">Join YSIFY Skills & Innovation Academy and get hands-on with the exact tools that power today's most exciting tech companies.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-cta-white">
+        <i class="fas fa-bolt"></i> Enroll Now — Free Consultation
+      </a>
+      <a href="tel:+919904230962" class="btn-outline-white">
+        <i class="fas fa-phone"></i> +91 99042 30962
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <div class="footer-brand-row">
+        
+          <span class="footer-name">YSIFY Academy</span>
+        </div>
+        <div class="footer-about">Surat's premier skills academy for AI, software development &amp; career growth. Empowering minds. Building futures.</div>
+      </div>
+      <div class="footer-social">
+        <a href="https://wa.me/919904230962" class="social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/ysify_academy/" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/ysify-skills-innovation-academy/?" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.youtube.com/@ysifyacademy" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Programs</h5>
+      <ul>
+        <li><a href="ysify_courses.html">AI Foundation</a></li>
+        <li><a href="ysify_courses.html">AI Automation</a></li>
+        <li><a href="ysify_courses.html">AI Agent Dev</a></li>
+        <li><a href="ysify_courses.html">Web Development</a></li>
+        <li><a href="ysify_courses.html">Python Dev</a></li>
+        <li><a href="ysify_courses.html">.NET Core</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Academy</h5>
+      <ul>
+        <li><a href="why-ysify.html">Why YSIFY</a></li>
+        <li><a href="ysify_internship.html">Internship</a></li>
+        <li><a href="ysify_placement.html">Placements</a></li>
+        <li><a href="ysify_about.html">About Us</a></li>
+        <li><a href="ysify_techstack.html">Tech Stack</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+919904230962">+91 99042 30962</a></li>
+        <li><a href="mailto:info@ysify.in">info@ysify.in</a></li>
+        <li><a href="contact.html">C1-206, Pragati IT Park,<br>Mota Varachha, Surat</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ysify Skills &amp; Innovation Academy. All rights reserved.</span>
+    <div style="display:flex;gap:20px">
+      <a href="https://ysify.in/privacy-policy" target="_blank">Privacy Policy</a>
+      <a href="https://ysify.in/terms-of-use" target="_blank">Terms of Use</a>
+      <a href="contact.html">Enroll Now</a>
+    </div>
+  </div>
+</footer>
+<script>
+/* ── Navbar scroll ── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+/* ── Mobile menu ── */
+document.getElementById('hamburgerBtn').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+function closeMobile() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+/* ── Scroll reveal ── */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 70);
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.sr').forEach(el => revealObs.observe(el));
+
+/* ── Category filter ── */
+function filterCat(cat, btn) {
+  // Update button states
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Show/hide categories
+  document.querySelectorAll('.cat-block').forEach(block => {
+    if (cat === 'all' || block.dataset.cat === cat) {
+      block.classList.remove('hidden');
+      block.style.opacity = '0';
+      block.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        block.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        block.style.opacity = '1';
+        block.style.transform = 'translateY(0)';
+      }, 20);
+    } else {
+      block.classList.add('hidden');
+    }
+  });
+}
+
+/* ── Stats counter ── */
+function runCounters(els) {
+  els.forEach(el => {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const dur = 1800;
+    const step = target / (dur / 16);
+    let cur = 0;
+    const t = setInterval(() => {
+      cur = Math.min(cur + step, target);
+      el.textContent = Math.floor(cur) + suffix;
+      if (cur >= target) { el.textContent = target + suffix; clearInterval(t); }
+    }, 16);
+  });
+}
+let statsDone = false;
+const statsObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !statsDone) {
+    statsDone = true;
+    runCounters(document.querySelectorAll('#stats-bar .sb-num'));
+  }
+}, { threshold: 0.3 });
+statsObs.observe(document.getElementById('stats-bar'));
+</script>
+</body>
+</html>
